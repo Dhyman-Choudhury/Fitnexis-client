@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 import { useForm } from 'react-hook-form';
 import { Card } from 'flowbite-react';
 import axios from 'axios';
@@ -8,12 +9,13 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 
+
 const Test = () => {
   const { register, handleSubmit, reset } = useForm();
   const queryClient = useQueryClient();
 
   const fetchCareData = async () => {
-    const res = await axios.get('http://localhost:3000/care');
+    const res = await axios.get('https://fitness-server-web.vercel.app/care');
     return res.data;
   };
 
@@ -24,7 +26,7 @@ const Test = () => {
 
   const mutation = useMutation({
     mutationFn: async (formData) => {
-      const res = await axios.post('http://localhost:3000/care', formData);
+      const res = await axios.post('https://fitness-server-web.vercel.app/care', formData);
       return res.data;
     },
     onSuccess: () => {
@@ -77,12 +79,15 @@ const Test = () => {
                 alt={item.name}
                 className="w-full h-48 object-cover rounded"
               />
+              <div className='bg-gray-400'>
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                 {item.name}
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+             <p className="font-normal text-gray-700 dark:text-gray-400">
                 {item.email}
               </p>
+              </div>
+              <Button variant="contained" color="primary">Click Me</Button>
             </Card>
           ))}
         </div>

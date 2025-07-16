@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 Test.jsx
-CustomNavbar.jsx
 .env.local
-Navbar.jsx
+Header.jsx
+CustomNavbar.jsx
+Register.jsx
+useAxios.jsx
