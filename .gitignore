@@ -27,7 +27,6 @@ Test.jsx
 Header.jsx
 CustomNavbar.jsx
 Login.jsx
-FeaturedSection.jsx
 SocialLogin.jsx
 
 useAxios.jsx
