@@ -26,5 +26,10 @@ Test.jsx
 .env.local
 Header.jsx
 CustomNavbar.jsx
+Login.jsx
+Banner.jsx
+FeaturedSection.jsx
+SocialLogin.jsx
 Register.jsx
+Newsletter.jsx
 useAxios.jsx

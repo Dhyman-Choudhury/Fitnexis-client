@@ -1,8 +1,35 @@
 @import "tailwindcss";
 
 
+
 .active{
   background-color:#60A5FA  ; 
   color: white ; 
 }
+ .btn-primary {
+  @apply bg-gradient-to-r from-green-400 to-teal-500 hover:from-teal-500 hover:to-green-400 text-white font-semibold px-4 py-2 rounded-md shadow-md transition duration-300 active:scale-95;
+}
+
+
+@keyframes growColor {
+  0% {
+    transform: scale(0.5);
+    color: #38bdf8; /* sky-400 */
+  }
+  50% {
+    transform: scale(1.1);
+    color: #22d3ee; /* cyan-400 */
+  }
+  100% {
+    transform: scale(1);
+    color: #34d399; /* emerald-400 */
+  }
+}
+
+.growColor {
+  animation: growColor 1.2s ease-out forwards;
+  font-family: sans-serif;
+  font-weight: 800;
+}
+
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FitnessLogo from "../FitnessLogo";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
@@ -9,8 +9,7 @@ function Navbar() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-neutral-500'
-          }`
+          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
         Home
@@ -20,19 +19,17 @@ function Navbar() {
       <NavLink
         to="/features"
         className={({ isActive }) =>
-          `flex items-center  py-2 transition-colors duration-300 lg:px-4 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-neutral-500'
-          }`
+          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
-       All Trainer
+        All Trainer
       </NavLink>
     </li>
     <li>
       <NavLink
-        to="/features"
+        to="/classes"
         className={({ isActive }) =>
-          `flex items-center  py-2 transition-colors duration-300 lg:px-4 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-neutral-500'
-          }`
+          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
         All Classes
@@ -40,10 +37,9 @@ function Navbar() {
     </li>
     <li>
       <NavLink
-        to="/features"
+        to="/dashboard"
         className={({ isActive }) =>
-          `flex items-center  py-2 transition-colors duration-300 lg:px-4 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-neutral-500'
-          }`
+          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
         Dashboard
@@ -51,10 +47,9 @@ function Navbar() {
     </li>
     <li>
       <NavLink
-        to="/features"
+        to="/community"
         className={({ isActive }) =>
-          `flex items-center  py-2 transition-colors duration-300 lg:px-4 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-neutral-500'
-          }`
+          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
         Community
@@ -62,19 +57,20 @@ function Navbar() {
     </li>
     <li>
       <NavLink
-        to="/features"
+        to="/profile"
         className={({ isActive }) =>
-          `flex items-center  py-2 transition-colors duration-300 lg:px-4 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-neutral-500'
-          }`
+          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
-         User Profile
+        User Profile
       </NavLink>
     </li>
-  </>
+  </>;
+
+
 
   return (
-    <header className="relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
+    <header className="relative z-20 w-full border-b border-slate-200 bg-gradient-to-r from-[#234652] to-[#3c325d] shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
       <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
         <nav
           aria-label="main navigation"
@@ -114,12 +110,13 @@ function Navbar() {
 
           {/* Call to Action Button */}
           <div className="ml-2 flex items-center px-6 lg:ml-3 lg:p-0">
-            <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-blue-500 px-5 text-sm font-medium text-white shadow-md transition duration-300 hover:bg-neutral-600 focus:bg-neutral-700 focus-visible:outline-none">
+            <Link to="/register" className="btn-primary inline-block text-center">
               Register
-            </button>
-            <button className="inline-flex ml-4 h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-blue-500 px-5 text-sm font-medium text-white shadow-md transition duration-300 hover:bg-neutral-600 focus:bg-neutral-700 focus-visible:outline-none">
+            </Link>
+            <Link to="/login" className="btn-primary inline-block text-center ml-4">
               Login
-            </button>
+            </Link>
+  
           </div>
         </nav>
       </div>
