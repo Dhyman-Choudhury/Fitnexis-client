@@ -7,7 +7,7 @@ const FitnessLogo = () => {
         <Link to='/'>
             <div className='flex items-end'>
                 <img className='mb-2 w-16' src={logo} alt="" />
-                <p className=' -ml-3 text-[32px] font-extrabold text-sky-300'>FitNexis</p>
+                <p className=' -ml-3 text-[32px] font-extrabold text-sky-300'>Fit<span className='text-white'>Nexis</span></p>
             </div>
         </Link>
     );

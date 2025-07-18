@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 import groovyWalkAnimation from "../../../assets/json/Secure Login.json";
-
 import { Link, useLocation, useNavigate } from 'react-router';
 import useAxios from '../../../hooks/useAxios';
 import Lottie from 'lottie-react';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useAuth()
     // const [profilePic, setProfilePic] = useState('');
     const axiosInstance = useAxios();
     const location = useLocation();
@@ -16,30 +19,39 @@ const Register = () => {
     const from = location.state?.from || '/';
 
     const onSubmit = async (data) => {
-        console.log(data)
-        try {
-            // const result = await createUser(data.email, data.password);
-            const userInfo = {
-                name: data.name,
-                photo: data.photo,
-                email: data.email,
-                role: 'user',
-                created_at: new Date().toISOString(),
-                last_log_in: new Date().toISOString(),
-            };
+        createUser(data.email, data.password)
+            .then(async (result) => {
 
-            await axiosInstance.post('/users', userInfo);
+                const userInfo = {
+                    name: data.name,
+                    photo: data.photo,
+                    email: data.email,
+                    role: 'user',
+                    created_at: new Date().toISOString(),
+                    last_log_in: new Date().toISOString(),
+                };
 
-            // const userProfile = {
-            //     displayName: data.name,
-            //     photoURL: profilePic,
-            // };
+                const userRes = await axiosInstance.post('/users', userInfo);
+                console.log(userRes.data)
 
-            // await updateUserProfile(userProfile);
-            navigate(from);
-        } catch (error) {
-            console.error(error);
-        }
+                //update user profile in firebase
+                const userProfile = {
+                    displayName: data.name,
+                    photoURL: data.photo
+                }
+              updateUserProfile(userProfile)
+                   .then(()=>{
+                    navigate(from);
+                   })
+                   .catch(error => {
+                    toast.warn(error.message)
+                   })
+
+            })
+            .catch(error =>{
+                toast.warn(error.message)
+            })
+        
     };
 
 
@@ -121,6 +133,7 @@ const Register = () => {
                             Already have an account?
                             <Link to="/login" className="text-blue-500 hover:underline ml-1">Login</Link>
                         </p>
+                        <SocialLogin></SocialLogin>
                     </form>
                 </div>
             </div>

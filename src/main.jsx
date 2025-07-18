@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import 'aos/dist/aos.css';
 import Aos from 'aos';
+import AuthProvider from './provider/AuthProvider.jsx';
 
 
 Aos.init();
@@ -19,7 +20,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
  <div className='w-11/12 mx-auto'>
     <QueryClientProvider client={queryClient}>
-     <RouterProvider router={router}></RouterProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
   </QueryClientProvider>
  </div>
   </StrictMode>,

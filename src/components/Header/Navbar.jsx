@@ -1,9 +1,25 @@
 import React, { useState } from "react";
 import FitnessLogo from "../FitnessLogo";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const { user, logOut } = useAuth()
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        // setSuccess(null)
+        navigate('/')
+        toast.success('You logged out')
+      })
+      .catch(error => {
+        toast(error.message)
+      })
+  }
+
   const links = <>
     <li>
       <NavLink
@@ -35,7 +51,8 @@ function Navbar() {
         All Classes
       </NavLink>
     </li>
-    <li>
+    {
+      user && <li>
       <NavLink
         to="/dashboard"
         className={({ isActive }) =>
@@ -45,6 +62,7 @@ function Navbar() {
         Dashboard
       </NavLink>
     </li>
+    }
     <li>
       <NavLink
         to="/community"
@@ -55,7 +73,7 @@ function Navbar() {
         Community
       </NavLink>
     </li>
-    <li>
+    {/* <li>
       <NavLink
         to="/profile"
         className={({ isActive }) =>
@@ -64,7 +82,7 @@ function Navbar() {
       >
         User Profile
       </NavLink>
-    </li>
+    </li> */}
   </>;
 
 
@@ -110,13 +128,23 @@ function Navbar() {
 
           {/* Call to Action Button */}
           <div className="ml-2 flex items-center px-6 lg:ml-3 lg:p-0">
-            <Link to="/register" className="btn-primary inline-block text-center">
-              Register
-            </Link>
-            <Link to="/login" className="btn-primary inline-block text-center ml-4">
-              Login
-            </Link>
-  
+            {
+              user ? <div className=" flex items-center ml-3">
+                {user && (
+                  <img
+                    className="w-16 h-16 object-cover rounded-full"
+                    src={user.photoURL}
+                    alt=''
+                    title={user.displayName}
+                  />
+                )}
+                <Link onClick={handleLogout} className="btn-primary inline-block text-center ml-4">
+                  LogOut
+                </Link>
+              </div> : <Link to="/login" className="btn-primary inline-block text-center ml-4">
+                Login
+              </Link>
+            }
           </div>
         </nav>
       </div>
