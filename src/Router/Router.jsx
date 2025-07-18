@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AuthLayout from "../layouts/AuthLayouts";
 import Register from "../pages/Authentication/Register/Register";
 import Login from "../pages/Authentication/Login/Login";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -33,5 +34,23 @@ export const router = createBrowserRouter([
         Component: Login
       }
     ]
-  }
+  },
+  {
+  path: '/dashboard',
+  Component: DashboardLayout,
+  children: [
+    {
+      index: true,
+      element: <div>Dashboard Home</div>
+    },
+    {
+      path: 'profile',
+      element: <div>Profile Page</div>
+    },
+    {
+      path: 'settings',
+      element: <div>Settings Page</div>
+    }
+  ]
+}
 ]);

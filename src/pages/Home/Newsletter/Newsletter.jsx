@@ -11,6 +11,7 @@ const Newsletter = () => {
   const onSubmit = async (data) => {
     try {
       const res = await axiosSecure.post('/newsletter', data);
+      console.log(res)
       if (res.status === 200) {
         Swal.fire('✅ Subscribed!', 'Thank you for subscribing!', 'success');
         reset();
