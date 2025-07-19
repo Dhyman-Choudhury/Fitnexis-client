@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import useAxios from '../../../hooks/useAxios';
+import Loader from '../../../components/shared/Loader';
 
 const FeaturedClasses = () => {
     const axios = useAxios();
@@ -13,7 +14,7 @@ const FeaturedClasses = () => {
         },
     });
 
-    if (isLoading) return <p className="text-center">Loading...</p>;
+    if (isLoading) return <Loader></Loader>;
 
     return (
         <section className="py-12 bg-gray-50">
