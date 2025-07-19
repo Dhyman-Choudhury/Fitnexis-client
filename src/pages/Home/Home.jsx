@@ -5,6 +5,7 @@ import FeaturedSection from './FeaturedSection/FeaturedSection';
 import About from './About/About';
 import Newsletter from './Newsletter/Newsletter';
 import { ToastContainer } from 'react-toastify';
+import FeaturedClasses from './FeaturedClasses/FeaturedClasses';
 
 const Home = () => {
     useEffect(()=>{
@@ -17,6 +18,7 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedSection></FeaturedSection>
             <About></About>
+            <FeaturedClasses></FeaturedClasses>
             <Newsletter></Newsletter>
             
         </div>

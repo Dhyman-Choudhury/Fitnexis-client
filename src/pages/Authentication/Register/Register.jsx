@@ -7,6 +7,7 @@ import Lottie from 'lottie-react';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
@@ -21,7 +22,6 @@ const Register = () => {
     const onSubmit = async (data) => {
         createUser(data.email, data.password)
             .then(async (result) => {
-
                 const userInfo = {
                     name: data.name,
                     photo: data.photo,
@@ -32,27 +32,46 @@ const Register = () => {
                 };
 
                 const userRes = await axiosInstance.post('/users', userInfo);
-                console.log(userRes.data)
+                console.log(userRes.data);
 
-                //update user profile in firebase
+                // 🔔 SweetAlert for successful CRUD (user info saved)
+                if (userRes?.data?.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your info has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });;
+                }
+
                 const userProfile = {
                     displayName: data.name,
                     photoURL: data.photo
-                }
-              updateUserProfile(userProfile)
-                   .then(()=>{
-                    navigate(from);
-                   })
-                   .catch(error => {
-                    toast.warn(error.message)
-                   })
+                };
+
+                updateUserProfile(userProfile)
+                    .then(() => {
+                        // 🔔 SweetAlert for successful Signup
+                        Swal.fire({
+                            title: 'Signup Successful!',
+                            text: 'Welcome to FitNexis!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            navigate(from);
+                        });
+                    })
+                    .catch(error => {
+                        toast.warn(error.message);
+                    });
 
             })
-            .catch(error =>{
-                toast.warn(error.message)
-            })
-        
+            .catch(error => {
+                toast.warn(error.message);
+            });
     };
+
 
 
 
