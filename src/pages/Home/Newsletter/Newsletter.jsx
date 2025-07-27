@@ -6,11 +6,11 @@ import useAxios from '../../../hooks/useAxios';
 
 const Newsletter = () => {
   const { register, handleSubmit, reset } = useForm();
-  const axiosSecure = useAxios()
+  const axiosPublic = useAxios()
 
   const onSubmit = async (data) => {
     try {
-      const res = await axiosSecure.post('/newsletter', data);
+      const res = await axiosPublic.post('/newsletter', data);
       console.log(res)
       if (res.status === 200) {
         Swal.fire('✅ Subscribed!', 'Thank you for subscribing!', 'success');
@@ -19,7 +19,7 @@ const Newsletter = () => {
         throw new Error('Subscription failed');
       }
     } catch (err) {
-      Swal.fire('❌ Oops!', 'Something went wrong. Try again.', err);
+      Swal.fire('❌ Oops!', 'Something went wrong. Try again.', 'error');
     }
   };
 

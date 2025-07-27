@@ -6,25 +6,45 @@ import AuthLayout from "../layouts/AuthLayouts";
 import Register from "../pages/Authentication/Register/Register";
 import Login from "../pages/Authentication/Login/Login";
 import DashboardLayout from "../layouts/DashboardLayout";
+import AllTrainers from "../pages/Trainers/AllTrainers";
+import TrainerDetails from "../pages/Trainers/TrainerDetails";
+import MemberRoute from "../routes/MemberRoute";
+import BeATrainer from "../pages/Trainers/BeATrainer";
+import PrivateRoutes from "../routes/PrivateRoutes";
+import TrainerBooking from "../pages/Trainers/TrainerBooking";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import MakeAdmin from "../pages/Dashboard/MakeAdmin/MakeAdmin";
+import AdminNewsletter from "../pages/Dashboard/AdminNewsletter/AdminNewsletter";
+import AppliedTrainerList from "../pages/Dashboard/AppliedTrainer/AppliedTrainerList";
+import AppliedTrainerDetails from "../pages/Dashboard/AppliedTrainer/AppliedTrainerDetails";
+import AllTrainersD from "../pages/Dashboard/AllTrainersD/AllTrainersD";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
+import AllClasses from "../pages/AllClasses/AllClasses";
+import TrainerAddSlot from "../pages/Dashboard/Trainer/TrainerAddSlot/TrainerAddSlot";
+import PaymentForm from "../pages/Dashboard/PaymentForm";
+import AdminBalance from "../pages/Dashboard/AdminBalance/AdminBalance";
+import TrainerManageSlot from "../pages/Dashboard/TrainerManageSlot/TrainerManageSlot";
+import Profile from "../pages/Dashboard/Member/Profile";
+import ActivityLog from "../pages/Dashboard/Member/ActivityLog";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component:Root,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
-        {
-          index:true,
-          Component:Home  
+    Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        index: true,
+        Component: Home
 
-        }
+      }
     ]
   },
   {
     path: '/',
     Component: AuthLayout,
     children: [
-    
+
       {
         path: 'register',
         Component: Register
@@ -32,25 +52,101 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         Component: Login
+      },
+      {
+        path: 'allTrainers',
+        Component: AllTrainers
+      }
+      ,
+      {
+        path: 'trainers/:trainerId',
+        Component: TrainerDetails
+      },
+      {
+        path: '/be-a-trainer',
+        element: (
+          <PrivateRoutes>
+            <BeATrainer />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/trainers/:trainerId/slots/:slotId",
+        element: (
+          < PrivateRoutes >
+            <TrainerBooking />
+          </PrivateRoutes >
+        )
+      },
+      {
+        path: '/allClasses',
+        Component: AllClasses
       }
     ]
   },
   {
-  path: '/dashboard',
-  Component: DashboardLayout,
-  children: [
-    {
-      index: true,
-      element: <div>Dashboard Home</div>
-    },
-    {
-      path: 'profile',
-      element: <div>Profile Page</div>
-    },
-    {
-      path: 'settings',
-      element: <div>Settings Page</div>
-    }
-  ]
-}
+    path: '/dashboard',
+    element: <PrivateRoutes>
+      <DashboardLayout />
+    </PrivateRoutes>,
+    children: [
+      {
+        index: true,
+        element: <div>Dashboard Home</div>
+      },
+      {
+        path: 'payment/:slotId',
+
+        element: <PrivateRoutes><Payment /></PrivateRoutes>
+      },
+      {
+        path: 'allTrainersD',
+        element: <AllTrainersD></AllTrainersD>,
+      },
+      {
+        path: 'makeAdmin',
+        element: <MakeAdmin></MakeAdmin>
+      },
+      {
+        path: 'adminNewsletter',
+        element: <AdminNewsletter></AdminNewsletter>
+      },
+      {
+        path: 'appliedTrainers',
+        element: <AppliedTrainerList></AppliedTrainerList>
+      },
+      {
+        path: 'appliedTrainer/:id',
+        element: (
+          // <AdminRoute>
+          // </AdminRoute>
+          <AppliedTrainerDetails />
+        )
+      },
+      {
+        path: 'adminBalance',
+        element: <AdminBalance></AdminBalance>
+      },
+      {
+        path: 'adminAddClass',
+        element: <AddClass></AddClass>
+      },
+      {
+        path: 'trainerAddSlot',
+        element: <TrainerAddSlot></TrainerAddSlot>
+      },
+      {
+        path: 'trainerManageSlots',
+        element: <TrainerManageSlot></TrainerManageSlot>
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>
+      },
+      {
+        path: 'activityLog',
+        element: <ActivityLog></ActivityLog>
+      },
+    ]
+  }
 ]);

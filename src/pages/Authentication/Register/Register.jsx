@@ -14,7 +14,7 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useAuth()
     // const [profilePic, setProfilePic] = useState('');
-    const axiosInstance = useAxios();
+    const axiosPublic = useAxios();
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from || '/';
@@ -26,13 +26,13 @@ const Register = () => {
                     name: data.name,
                     photo: data.photo,
                     email: data.email,
-                    role: 'user',
+                    role: 'member',
                     created_at: new Date().toISOString(),
                     last_log_in: new Date().toISOString(),
                 };
 
-                const userRes = await axiosInstance.post('/users', userInfo);
-                console.log(userRes.data);
+                const userRes = await axiosPublic.post('/api/users', userInfo);
+                
 
                 // 🔔 SweetAlert for successful CRUD (user info saved)
                 if (userRes?.data?.insertedId) {

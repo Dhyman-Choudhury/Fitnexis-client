@@ -81,7 +81,7 @@ const Banner = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.6 }}
                     >
-                        <Link to="/classes">
+                        <Link to="/allClasses">
                             <button className="px-8 py-3 bg-gradient-to-r from-green-400 to-teal-500 hover:from-teal-500 hover:to-green-400 text-white font-semibold rounded-full shadow-lg transition-all duration-300">
                                 Explore Classes
                             </button>

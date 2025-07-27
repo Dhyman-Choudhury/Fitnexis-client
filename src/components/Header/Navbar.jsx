@@ -25,7 +25,7 @@ function Navbar() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
+          ` flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
         Home
@@ -33,17 +33,17 @@ function Navbar() {
     </li>
     <li>
       <NavLink
-        to="/features"
+        to="/allTrainers"
         className={({ isActive }) =>
           `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
-        All Trainer
+        All Trainers
       </NavLink>
     </li>
     <li>
       <NavLink
-        to="/classes"
+        to="/allClasses"
         className={({ isActive }) =>
           `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
@@ -119,7 +119,7 @@ function Navbar() {
           <ul
             role="menubar"
             aria-label="Select page"
-            className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center items-center overflow-hidden overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto  lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen ? "visible opacity-100 backdrop-blur-sm" : "invisible opacity-0"
+            className={`absolute right-0 top-0 z-[-1] h-[28.5rem]  justify-center items-center overflow-hidden overflow-y-auto overscroll-contain bg-gradient-to-r from-[#234652] to-[#3c325d] px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto  lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen ? "visible opacity-100 backdrop-blur-sm" : "invisible opacity-0"
               }`}
           >
             {links}

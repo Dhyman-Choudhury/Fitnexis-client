@@ -1,12 +1,13 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { NavLink, } from 'react-router';
 import FitnessLogo from './FitnessLogo';
+import useAuth from '../hooks/useAuth';
 
 
 
 const Footer = () => {
     // const navigate = useNavigate();
-    // const { user } = use(AuthContext);
+    const { user } = useAuth();
 
     // const handleNavigate = () => {
     //     navigate('/addBlog');
@@ -43,7 +44,9 @@ const Footer = () => {
                 All Classes
             </NavLink>
         </li>
-        <li>
+      {
+        user &&
+          <li>
             <NavLink
                 to="/dashboard"
                 className={({ isActive }) =>
@@ -53,6 +56,7 @@ const Footer = () => {
                 Dashboard
             </NavLink>
         </li>
+      }
         <li>
             <NavLink
                 to="/community"
@@ -78,7 +82,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-950 text-gray-300 py-10">
-            <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div className=" mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 
                 {/* Logo and Description */}
                 <div>

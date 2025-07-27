@@ -37,7 +37,7 @@ const Testimonials = () => {
     if (reviews.length === 0)
         return <p className="text-center py-10">No reviews available.</p>;
 
-    const { name, message, rating } = reviews[currentIndex];
+    const { name, message, rating } = reviews?.[currentIndex] || {};
 
     return (
         <section className="my-12 px-4 max-w-3xl mx-auto text-center">
@@ -46,7 +46,7 @@ const Testimonials = () => {
             <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
                 <p className="italic text-gray-700 mb-6">"{message}"</p>
                 <div className="flex items-center justify-center mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {Array.from({ length: 5 }).map((_, i) => (
                         <FaStar
                             key={i}
                             className={i < rating ? 'text-yellow-400' : 'text-gray-300'}
