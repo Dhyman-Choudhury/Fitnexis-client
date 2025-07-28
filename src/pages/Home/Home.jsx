@@ -8,6 +8,7 @@ import FeaturedClasses from './FeaturedClasses/FeaturedClasses';
 import Testimonials from './Testimonials/Testimonials';
 import Newsletter from './Newsletter/Newsletter';
 import TrainerTeamSection from './TrainerTeamSection/TrainerTeamSection';
+import LatestForums from './Forum/LatestForum';
 
 const Home = () => {
     useEffect(()=>{
@@ -22,6 +23,7 @@ const Home = () => {
             <About></About>
             <FeaturedClasses></FeaturedClasses>
             <Testimonials></Testimonials>
+            <LatestForums></LatestForums>
            <Newsletter></Newsletter>
            <TrainerTeamSection></TrainerTeamSection>
             

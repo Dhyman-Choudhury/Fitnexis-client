@@ -12,6 +12,7 @@ import {
     AiOutlineTeam,
     AiOutlinePlus,
     AiOutlineHistory,
+    AiOutlinePlusCircle,
 } from 'react-icons/ai';
 import { MdAddToPhotos, MdManageAccounts } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa";
@@ -94,6 +95,10 @@ const DashboardLayout = () => {
                     <NavLink to="/dashboard/trainerManageSlots" className={linkClasses}>
                         <MdManageAccounts size={20} />
                         Manage Slots
+                    </NavLink>
+                    <NavLink to="/dashboard/addForum" className={linkClasses}>
+                        <AiOutlinePlusCircle size={20} />
+                        Add New Forum
                     </NavLink>
 
                     {/* Member */}

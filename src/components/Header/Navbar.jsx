@@ -65,12 +65,12 @@ function Navbar() {
     }
     <li>
       <NavLink
-        to="/community"
+        to="/forums"
         className={({ isActive }) =>
           `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
         }
       >
-        Community
+        Forums
       </NavLink>
     </li>
     {/* <li>

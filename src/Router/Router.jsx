@@ -8,7 +8,6 @@ import Login from "../pages/Authentication/Login/Login";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AllTrainers from "../pages/Trainers/AllTrainers";
 import TrainerDetails from "../pages/Trainers/TrainerDetails";
-import MemberRoute from "../routes/MemberRoute";
 import BeATrainer from "../pages/Trainers/BeATrainer";
 import PrivateRoutes from "../routes/PrivateRoutes";
 import TrainerBooking from "../pages/Trainers/TrainerBooking";
@@ -21,11 +20,13 @@ import AllTrainersD from "../pages/Dashboard/AllTrainersD/AllTrainersD";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import TrainerAddSlot from "../pages/Dashboard/Trainer/TrainerAddSlot/TrainerAddSlot";
-import PaymentForm from "../pages/Dashboard/PaymentForm";
 import AdminBalance from "../pages/Dashboard/AdminBalance/AdminBalance";
 import TrainerManageSlot from "../pages/Dashboard/TrainerManageSlot/TrainerManageSlot";
 import Profile from "../pages/Dashboard/Member/Profile";
 import ActivityLog from "../pages/Dashboard/Member/ActivityLog";
+import AddForumModal from "../pages/Dashboard/AddForumModal/AddForumModal";
+import ForumPage from "../pages/Home/Forum/ForumPage";
+import ForumDetails from "../pages/Home/Forum/ForumDetails";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,14 @@ export const router = createBrowserRouter([
       {
         path: '/allClasses',
         Component: AllClasses
+      },
+      {
+        path: '/forums',
+        Component: ForumPage
+      },
+      {
+        path: '/forums/:id',
+        Component: ForumDetails
       }
     ]
   },
@@ -138,6 +147,10 @@ export const router = createBrowserRouter([
       {
         path: 'trainerManageSlots',
         element: <TrainerManageSlot></TrainerManageSlot>
+      },
+      {
+        path: 'addForum',
+        element: <AddForumModal></AddForumModal>
       },
       {
         path: 'profile',
