@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useParams } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 
@@ -13,6 +13,10 @@ const ForumDetails = () => {
   const queryClient = useQueryClient();
 
   const [userVote, setUserVote] = useState(null);
+
+   useEffect(()=>{
+      document.title= 'Details Forum | FitNexis'
+    },[])
 
   const { data: forum, isLoading } = useQuery({
     queryKey: ['forum', id],

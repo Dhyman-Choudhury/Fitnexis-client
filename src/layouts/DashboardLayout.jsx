@@ -13,6 +13,7 @@ import {
     AiOutlinePlus,
     AiOutlineHistory,
     AiOutlinePlusCircle,
+    AiOutlineUserSwitch,
 } from 'react-icons/ai';
 import { MdAddToPhotos, MdManageAccounts } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa";
@@ -52,11 +53,6 @@ const DashboardLayout = () => {
                     <NavLink to="/dashboard" end className={linkClasses}>
                         <AiOutlineHome size={20} />
                         Dashboard Home
-                    </NavLink>
-
-                    <NavLink to="/dashboard/settings" className={linkClasses}>
-                        <AiOutlineSetting size={20} />
-                        Settings
                     </NavLink>
 
                     {/* Admin */}
@@ -111,6 +107,11 @@ const DashboardLayout = () => {
                         <AiOutlineHistory size={20} />
                         Activity Log
                     </NavLink>
+                    <NavLink to="/dashboard/bookedTrainer" className={linkClasses}>
+                        <AiOutlineUserSwitch size={20} />
+                        Booked Trainer
+                    </NavLink>
+
 
 
 

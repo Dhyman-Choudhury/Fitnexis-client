@@ -26,10 +26,10 @@ const AllTrainers = () => {
     if (isError) return <p className="text-red-500">Error loading trainers.</p>;
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 my-0.5 rounded-xl">
             <h1 className="text-3xl text-white font-bold mb-6">All Trainers</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {trainers.map((trainer, i) => (
+                {trainers?.map((trainer, i) => (
                     <motion.div
                         key={trainer._id}
                         className="border bg-gray-400 rounded-xl border-gray-300 p-4 shadow-2xla"
@@ -39,8 +39,8 @@ const AllTrainers = () => {
                     >
                         {/* Trainer Image */}
                         <motion.img
-                            src={trainer.profileImage}
-                            alt={trainer.name}
+                            src={trainer?.profileImage}
+                            alt={trainer?.name}
                             className="rounded-xl mx-auto mb-4"
                             initial={{ x: -100, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
@@ -87,7 +87,7 @@ const AllTrainers = () => {
                             {/* Available Days */}
                             <p className="text-green-800 text-lg flex gap-2 mt-2">
                                 <span className="text-gray-800">Available Days:</span>
-                                {trainer.availableDays?.map((day, index) => (
+                                {trainer?.availableDays?.map((day, index) => (
                                     <span key={index}>{day}</span>
                                 ))}
                             </p>
@@ -95,20 +95,23 @@ const AllTrainers = () => {
                             {/* ✅ Available Slots from trainer.availableSlots */}
                             <div className="mt-2">
                                 <h3 className="text-gray-900 font-semibold mb-1">Available Slots:</h3>
-                                {trainer.availableSlots && trainer.availableSlots.length > 0 ? (
+                                {trainer?.availableSlots?.filter(slot => !slot.isBooked).length > 0 ? (
                                     <div className="flex gap-2 flex-wrap">
-                                        {trainer.availableSlots.map((slot) => (
-                                            <span
-                                                key={slot._id}
-                                                className="bg-blue-600 text-white px-3 py-1 rounded text-sm"
-                                            >
-                                                {slot.slotName} ({slot.slotTime})
-                                            </span>
-                                        ))}
+                                        {trainer?.availableSlots
+                                            ?.filter(slot => !slot.isBooked)
+                                            .map(slot => (
+                                                <span
+                                                    key={slot._id}
+                                                    className="bg-blue-600 text-white px-3 py-1 rounded text-sm"
+                                                >
+                                                    {slot?.slotName} ({slot?.slotTime})
+                                                </span>
+                                            ))}
                                     </div>
                                 ) : (
-                                    <p className="text-gray-700">No slots available.</p>
+                                    <p className="text-gray-700">No available slots.</p> // ✅ fallback message
                                 )}
+
                             </div>
 
                             {/* View Details */}

@@ -16,6 +16,8 @@ const TrainerDetails = () => {
   const { user, isLoading } = useAuth()
 
 
+
+
   const {
     data: users = [],
     isFetching,
@@ -27,6 +29,8 @@ const TrainerDetails = () => {
       return res.data;
     },
   });
+
+
 
   const {
     data: trainer = [],
@@ -53,14 +57,14 @@ const TrainerDetails = () => {
     enabled: !!trainerId,
   });
 
-  
+console.log(slots)
   if (isLoading) return <Loader />
   if (loadingTrainer || loadingSlots || isFetching) return <Loader />;
   if (errorTrainer || errorSlots)
     return <p className="text-red-500">Error loading trainer data</p>;
 
   const isTrainer = users?.find(us => us?.email === user?.email)
-  console.log(isTrainer)
+
   return (
     <div className="container mx-auto p-4 rounded-md shadow-lg">
       <ToastContainer />
@@ -112,7 +116,7 @@ const TrainerDetails = () => {
           {trainer?.availableDays?.length > 0 && (
             <p className="mb-4">
               Available Days:{' '}
-              {trainer.availableDays.join(', ')}
+              {trainer?.availableDays?.join(', ')}
             </p>
           )}
 
@@ -140,9 +144,9 @@ const TrainerDetails = () => {
                   to={`/trainers/${trainer._id}/slots/${slot._id}`}
                   className="block text-center border border-blue-500 rounded py-3 hover:bg-blue-600 transition-colors text-gray-300 font-medium"
                 >
-                  <h3 className="text-lg"><strong>Slot Name:</strong> {slot.slotName}</h3>
-                  <p><strong>Slot Time:</strong> {slot.slotTime}</p>
-                  <p><strong>Class Name:</strong> {slot.class_name}</p>
+                  <h3 className="text-lg"><strong>Slot Name:</strong> {slot?.slotName}</h3>
+                  <p><strong>Slot Time:</strong> {slot?.slotTime}</p>
+                  <p><strong>Class Name:</strong> {slot?.class_name}</p>
                 </Link>
               ) : (
                 <div
@@ -152,7 +156,7 @@ const TrainerDetails = () => {
                   className="block text-center border border-blue-500 rounded py-3 hover:bg-blue-600 transition-colors text-white font-medium cursor-not-allowed"
                 >
                   <h3 className="text-lg"><strong>Slot Name:</strong> {slot.slotName}</h3>
-                 <p><strong>Slot Time:</strong> {slot.slotTime}</p>
+                  <p><strong>Slot Time:</strong> {slot.slotTime}</p>
                   <p><strong>Class Name:</strong> {slot.class_name}</p>
                 </div>
               )
@@ -160,11 +164,11 @@ const TrainerDetails = () => {
               <Link
                 to="/login"
                 className="block text-center border border-blue-500 rounded py-3 hover:bg-blue-600 transition-colors text-white font-medium"
-               
+
               >
                 <h3 className="text-lg"><strong>Slot Name:</strong> {slot.slotName}</h3>
                 <p><strong>Slot Time:</strong> {slot.slotTime}</p>
-                 <p><strong>Class Name:</strong> {slot.class_name}</p>
+                <p><strong>Class Name:</strong> {slot.class_name}</p>
               </Link>
             )}
 
@@ -182,7 +186,7 @@ const TrainerDetails = () => {
       {
         isTrainer?.status === "pending" || isTrainer?.status === "approved" ? <div className="mt-8 text-center">
           <Link
-            disabeled
+            disabled
 
             className="inline-block btn-primary px-6 py-3 rounded hover:bg-blue-700"
           >

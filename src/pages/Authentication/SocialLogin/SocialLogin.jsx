@@ -48,7 +48,7 @@ const SocialLogin = () => {
     };
 
     return (
-        <div className='w-2/3 text-center flex flex-col justify-center'>
+        <div className=' text-center flex flex-col justify-center'>
             <ToastContainer/>
             <p className='mb-4'>OR</p>
             <button

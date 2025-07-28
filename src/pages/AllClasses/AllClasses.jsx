@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import Loader from '../../components/shared/Loader';
 
 const AllClasses = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [searchInput, setSearchInput] = useState('');
   const axiosSecure = useAxiosSecure();
-
+  useEffect(()=>{
+    document.title= 'All Classes | FitNexis'
+  },[])
   const {
     data: classesData = {},
     isLoading,
@@ -27,18 +31,18 @@ const AllClasses = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setPage(1); // Reset to first page on new search
+    setPage(1);
     setSearch(searchInput.trim());
   };
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (isLoading) return <Loader />;
   if (isError) return <div className="text-center py-10 text-red-500">Error loading classes</div>;
 
   const { classes, total, limit } = classesData;
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-4 py-10 my-0.5 rounded-xl">
       <h2 className="text-3xl font-bold mb-6 text-white">All Fitness Classes</h2>
 
       {/* 🔍 Search Input */}
@@ -55,7 +59,14 @@ const AllClasses = () => {
       {/* 📦 Class Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {classes.map(classItem => (
-          <div key={classItem.class_name} className="border bg-white rounded-xl p-5 shadow hover:shadow-lg transition">
+          <motion.div
+            key={classItem.class_name}
+            className="border bg-white rounded-xl p-5 shadow hover:shadow-lg transition"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            whileHover={{ scale: 1.02 }}
+          >
             <h3 className="text-xl font-semibold mb-2">{classItem.class_name}</h3>
             <p className="text-sm text-gray-600 mb-3">{classItem.details}</p>
             <p className="text-sm text-gray-500 mb-2">Slot: {classItem.slotName} ({classItem.slotTime})</p>
@@ -70,7 +81,7 @@ const AllClasses = () => {
                 </Link>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

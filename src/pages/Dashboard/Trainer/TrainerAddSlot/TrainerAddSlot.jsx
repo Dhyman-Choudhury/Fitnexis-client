@@ -36,6 +36,7 @@ const TrainerAddSlot = () => {
         onError: () => Swal.fire('Error', 'Failed to load trainer data', 'error'),
     });
 
+    
     // Fetch classes added by admin
     const {
         data: classesData,
@@ -59,69 +60,93 @@ const TrainerAddSlot = () => {
 
     // On form submit
     const onSubmit = async (data) => {
-        if (!trainer) return;
+  if (!trainer) {
+    Swal.fire('Error', 'Trainer data not loaded', 'error');
+    return;
+  }
 
-        // Find the selected class details for extra info
-        const selectedClass = classesData.find(cls => cls.class_name === data.selectedClass);
+  // Find selected class details
+  const selectedClass = classesData.find(
+    (cls) => cls?.class_name === data?.selectedClass
+  );
 
-        // Prepare slot data to send to backend
-        const slotData = {
-            slotName: data.slotName,
-            slotTime: data.slotTime,
-            class_name: data.selectedClass,
-            details: selectedClass?.details || '',
-            isBooked: false,
-            notes: data.notes || '',
-            createdAt: new Date().toISOString(),
-            trainers: [
-                {
-                    trainerId: trainer._id,
-                    name: trainer.name,
-                    email: trainer.email,
-                    image: trainer.profileImage,
-                    age: trainer.age,
-                    // Extract selected days values (array of strings)
-                    availableDays: data.availableDays ? data.availableDays.map(d => d.value) : [],
-                }
-            ],
-        };
+  if (!selectedClass) {
+    Swal.fire('Error', 'Invalid class selected', 'error');
+    return;
+  }
 
-        try {
-            const res = await axiosSecure.post('/slots', slotData);
-            if (res.data.insertedId) {
-                Swal.fire('Success', 'Slot added successfully', 'success');
-                reset(); // Reset form after success
-            }
-        } catch (error) {
-            Swal.fire('Error', error.response?.data?.message || 'Failed to add slot', 'error');
-        }
-
-         const slotPayload = [
+  const slotData = {
+    slotName: data?.slotName,
+    slotTime: data?.slotTime,
+    class_name: data?.selectedClass,
+    classImage: selectedClass?.image,
+    details: selectedClass?.details || '',
+    isBooked: false,
+    notes: data?.notes || '',
+    createdAt: new Date().toISOString(),
+    trainers: [
       {
-        slotName: data.slotName,
-        slotTime: data.slotTime,
-        details: data.details,
-        createdAt: new Date().toISOString(),
-        isBooked: false,
+        trainerId: trainer?._id,
+        name: trainer?.name,
+        email: trainer?.email,
+        image: trainer?.profileImage,
+        age: trainer?.age,
+        experience: trainer?.experience,
+        skills: trainer?.skills,
+        availableDays: data?.availableDays?.map((d) => d.value) || [],
       },
-    ];
+    ],
+  };
 
-    try {
-      const res = await axiosSecure.patch(`/api/trainers/${trainer._id}/slots`, {
-        slots: slotPayload,
-      });
 
-      if (res.data.message === 'Slots added successfully') {
-        Swal.fire('Success!', 'Slot added to trainer', 'success');
-        reset();
-      } else {
-        Swal.fire('Error', res.data.message, 'error');
-      }
-    } catch (error) {
-      console.error('Error adding slot:', error);
-      Swal.fire('Failed', 'Something went wrong', 'error');
+
+  // 1. Post to /api/slots
+  try {
+    const res = await axiosSecure.post('/slots', slotData);
+    console.log("POST /api/slots response:", res.data);
+
+    if (res.data.insertedId) {
+      Swal.fire('Success', 'Slot added successfully', 'success');
+    } else {
+      throw new Error('Slot not added');
     }
-    };
+  } catch (error) {
+    console.error('Error posting slotData:', error);
+    const errorMessage =
+      error?.response?.data?.message || 'Failed to add slot to /slots';
+    Swal.fire('Error', errorMessage, 'error');
+    return; // Stop execution if failed
+  }
+
+  // 2. Patch trainer with simple info
+  const slotPayload = [
+    {
+      slotName: data.slotName,
+      slotTime: data.slotTime,
+      details: selectedClass.details,
+      createdAt: new Date().toISOString(),
+      isBooked: false,
+    },
+  ];
+
+  try {
+    const patchRes = await axiosSecure.patch(
+      `/api/trainers/${trainer._id}/slots`,
+      { slots: slotPayload }
+    );
+
+    if (patchRes.data.message === 'Slots added successfully') {
+      Swal.fire('Success!', 'Slot added to trainer', 'success');
+      reset(); // Reset form only if both success
+    } else {
+      Swal.fire('Warning', patchRes.data.message, 'warning');
+    }
+  } catch (error) {
+    console.error('Error patching trainer slots:', error);
+    Swal.fire('Error', 'Failed to update trainer slots', 'error');
+  }
+};
+
 
     // Show loader while data is loading
     if (isTrainerLoading || isClassesLoading) {
@@ -221,15 +246,21 @@ const TrainerAddSlot = () => {
                     {/* Slot Name */}
                     <div>
                         <label className="font-semibold">Slot Name</label>
-                        <input
+                        <select
                             {...register('slotName', { required: true })}
-                            placeholder="e.g., Morning Slot"
-                            className="input input-bordered w-full p-3 bg-white border border-gray-300 rounded-lg"
-                        />
+                            className="select select-bordered w-full bg-white p-3 rounded-lg border border-gray-300"
+                        >
+                            <option value="">Select a slot</option>
+                            <option value="Morning Slot">Morning Slot</option>
+                            <option value="Afternoon Slot">Afternoon Slot</option>
+                            <option value="Evening Slot">Evening Slot</option>
+                            <option value="Night Slot">Night Slot</option>
+                        </select>
                         {errors.slotName && (
                             <p className="text-red-500 text-sm mt-1">Slot name is required</p>
                         )}
                     </div>
+
 
                     {/* Slot Time */}
                     <div>

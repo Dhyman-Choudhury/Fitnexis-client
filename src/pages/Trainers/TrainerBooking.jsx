@@ -97,7 +97,7 @@ const TrainerBooking = () => {
             </div>
 
             <div className="mt-6">
-                <button onClick={handleJoinNow} className="btn btn-primary w-full md:w-1/3">
+                <button onClick={handleJoinNow} className="btn btn-primary w-full ">
                     Join Now
                 </button>
             </div>

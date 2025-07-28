@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai';
 import { FaCrown, FaChalkboardTeacher } from 'react-icons/fa';
 import { toast } from 'react-toastify';
@@ -11,6 +11,10 @@ const ForumPage = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [page, setPage] = useState(1);
+
+     useEffect(()=>{
+        document.title= 'Forums | FitNexis'
+      },[])
 
     const { data, refetch, isLoading } = useQuery({
         queryKey: ['forums', page],
