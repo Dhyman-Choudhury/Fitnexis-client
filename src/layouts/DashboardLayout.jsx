@@ -18,11 +18,13 @@ import {
 import { MdAddToPhotos, MdManageAccounts } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa";
 import FitnessLogo from '../components/FitnessLogo';
+import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
     useEffect(() => {
         document.title = 'Dashboard | FitNexis'
     }, [])
+    const {role, roleLoading } = useUserRole()
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const linkClasses = ({ isActive }) =>
@@ -56,6 +58,7 @@ const DashboardLayout = () => {
                     </NavLink>
 
                     {/* Admin */}
+                    {!roleLoading && role === 'admin' && <>
                     <NavLink to="/dashboard/allTrainersD" className={linkClasses}>
                         <AiOutlineTeam size={20} />
                         All Trainers
@@ -82,8 +85,14 @@ const DashboardLayout = () => {
                         <AiOutlinePlus size={20} />
                         Add Class
                     </NavLink>
+                    <NavLink to="/dashboard/addForum" className={linkClasses}>
+                        <AiOutlinePlusCircle size={20} />
+                        Add New Forum
+                    </NavLink>
+                    </>}
 
                     {/* Trainer */}
+                    {!roleLoading && role === 'trainer' && <>
                     <NavLink to="/dashboard/trainerAddSlot" className={linkClasses}>
                         <MdAddToPhotos size={20} />
                         Trainer Add Slot
@@ -96,8 +105,10 @@ const DashboardLayout = () => {
                         <AiOutlinePlusCircle size={20} />
                         Add New Forum
                     </NavLink>
+                    </>}
 
                     {/* Member */}
+                    {!roleLoading && role === 'member' && <>
                     <NavLink to="/dashboard/profile" className={linkClasses}>
                         <AiOutlineUser size={20} />
                         Profile
@@ -111,6 +122,7 @@ const DashboardLayout = () => {
                         <AiOutlineUserSwitch size={20} />
                         Booked Trainer
                     </NavLink>
+                    </>}
 
 
 

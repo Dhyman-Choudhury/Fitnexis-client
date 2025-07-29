@@ -28,6 +28,11 @@ import AddForumModal from "../pages/Dashboard/AddForumModal/AddForumModal";
 import ForumPage from "../pages/Home/Forum/ForumPage";
 import ForumDetails from "../pages/Home/Forum/ForumDetails";
 import BookedTrainer from "../pages/Dashboard/Member/BookedTrainer";
+import Forbidden from "../pages/Forbidden/Forbidden";
+import AdminRoute from "../routes/AdminRoute";
+import TrainerRoute from "../routes/TrainerRoute";
+import MemberRoute from "../routes/MemberRoute";
+import AdminTrainerRoute from "../routes/AdminTrainerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         Component: Login
+      },
+      {
+        path: 'forbidden',
+        Component: Forbidden
       },
       {
         path: 'allTrainers',
@@ -111,59 +120,63 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allTrainersD',
-        element: <AllTrainersD></AllTrainersD>,
+
+        element:<AdminRoute><AllTrainersD></AllTrainersD></AdminRoute> ,
       },
       {
         path: 'makeAdmin',
-        element: <MakeAdmin></MakeAdmin>
+      
+        element:<AdminRoute><MakeAdmin></MakeAdmin></AdminRoute> 
       },
       {
         path: 'adminNewsletter',
-        element: <AdminNewsletter></AdminNewsletter>
+
+        element:<AdminRoute><AdminNewsletter></AdminNewsletter></AdminRoute> 
       },
       {
         path: 'appliedTrainers',
-        element: <AppliedTrainerList></AppliedTrainerList>
+        element:<AdminRoute><AppliedTrainerList></AppliedTrainerList></AdminRoute> 
       },
       {
         path: 'appliedTrainer/:id',
         element: (
-          // <AdminRoute>
-          // </AdminRoute>
-          <AppliedTrainerDetails />
+           <AdminRoute>
+             <AppliedTrainerDetails />
+          </AdminRoute>
+         
         )
       },
       {
         path: 'adminBalance',
-        element: <AdminBalance></AdminBalance>
+        element:<AdminRoute><AdminBalance></AdminBalance></AdminRoute> 
       },
       {
         path: 'adminAddClass',
-        element: <AddClass></AddClass>
+        element:<AdminRoute><AddClass></AddClass></AdminRoute>
       },
       {
         path: 'trainerAddSlot',
-        element: <TrainerAddSlot></TrainerAddSlot>
+        element:<TrainerRoute><TrainerAddSlot></TrainerAddSlot></TrainerRoute> 
       },
       {
         path: 'trainerManageSlots',
-        element: <TrainerManageSlot></TrainerManageSlot>
+        element:<TrainerRoute><TrainerManageSlot></TrainerManageSlot></TrainerRoute> 
       },
       {
         path: 'addForum',
-        element: <AddForumModal></AddForumModal>
+        element:<AdminTrainerRoute><AddForumModal></AddForumModal></AdminTrainerRoute> 
       },
       {
         path: 'profile',
-        element: <Profile></Profile>
+        element:<MemberRoute><Profile></Profile></MemberRoute> 
       },
       {
         path: 'activityLog',
-        element: <ActivityLog></ActivityLog>
+        element:<MemberRoute><ActivityLog></ActivityLog></MemberRoute> 
       },
       {
         path: 'bookedTrainer',
-        element: <BookedTrainer></BookedTrainer>
+        element:<MemberRoute><BookedTrainer></BookedTrainer></MemberRoute> 
       },
     ]
   }

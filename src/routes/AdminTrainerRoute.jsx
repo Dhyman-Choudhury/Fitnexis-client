@@ -4,7 +4,7 @@ import useUserRole from '../hooks/useUserRole';
 import { Navigate } from 'react-router';
 import Loader from '../components/shared/Loader';
 
-const AdminRoute = ({ children }) => {
+const AdminTrainerRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const { role, roleLoading } = useUserRole();
 
@@ -12,11 +12,11 @@ const AdminRoute = ({ children }) => {
         return <Loader/>
     }
 
-    if (!user || role !== 'admin') {
+    if (!user || (role !== 'admin' && role !== 'trainer')) {
         return <Navigate state={{ from: location.pathname }} to="/forbidden"></Navigate>
     }
 
     return children;
 };
 
-export default AdminRoute;
+export default AdminTrainerRoute;

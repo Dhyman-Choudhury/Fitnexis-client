@@ -45,7 +45,7 @@ const AddForumModal = () => {
     return (
         <div className="table_bg min-h-screen p-10">
             <ToastContainer />
-            <h1 className="text-3xl text-white font-bold mb-4">Add New Forum Post</h1>
+            <h1 className="text-4xl text-white font-bold mb-10">Add New Forum Post</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
                 <input

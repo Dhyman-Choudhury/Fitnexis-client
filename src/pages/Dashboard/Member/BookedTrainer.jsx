@@ -24,6 +24,8 @@ const BookedTrainer = () => {
       return res.data;
     },
   });
+
+    console.log(booking)
   const { data: users = [], isLoading: isFetching } = useQuery({
     queryKey: ['user', user?.email],
     enabled: !!user?.email,
@@ -45,33 +47,52 @@ const BookedTrainer = () => {
     // return <p className="text-center text-red-500">No booked trainer found.</p>;
 
   return (
+    <div className='table_bg min-h-screen py-10'>
     <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-6 text-center">Booked Trainer Details</h2>
+      <h2 className="text-4xl text-gray-50 font-bold mb-10 text-center">Booked Trainer Details</h2>
 
      {
         booking?.map((data, index)=>
-             <div key={data._id} className="bg-white p-6 rounded shadow mb-5">
+             <div key={data._id} className="bg-white p-8 rounded shadow mb-5">
         {/* Trainers Info */}
         <p># <small>{index+1}</small></p>
-        <h3 className="text-xl font-semibold mb-5">Trainer Info</h3>
+        <h3 className="text-2xl font-semibold mb-5">Trainer Info</h3>
         {data?.trainers?.map((trainer, index) => (
           <div key={index} className="flex items-center justify-between gap-4 mb-4 border-b pb-4">
-            <div className="flex items-center gap-4">
-              {trainer?.image && (
+            
+              <div>
+                {trainer?.image && (
                 <img
-                  src={trainer.image}
-                  alt={trainer.name}
+                  src={trainer?.image}
+                  alt={trainer?.name}
                   className="w-20 h-20 rounded-full object-cover"
                 />
               )}
-              <div>
-                <p><span className="font-medium">Name:</span> {trainer.name}</p>
-                <p><span className="font-medium">Email:</span> {trainer.email}</p>
-                {trainer.specialty && (
-                  <p><span className="font-medium">Specialty:</span> {trainer.specialty}</p>
-                )}
               </div>
-            </div>
+              <div>
+              
+                <p><span className="font-medium">Name:</span> {trainer?.name}</p>
+                <p><span className="font-medium">Email:</span> {trainer?.email}</p>
+                <p><span className="font-medium">Age:</span> {trainer?.age}</p>
+               
+              </div>
+              <div>
+              
+                <p><span className="font-medium">Experience:</span> {trainer?.experience}</p>
+               <div className='flex gap-1'>
+                <strong>Skills:</strong>
+                {trainer?.skills?.map((skill, index) =><p key={index}><span className="font-medium"></span> {skill},</p> )}
+                 
+               </div>
+               <div className='flex gap-1'>
+                <strong>Available Days:</strong>
+                {trainer?.availableDays?.map((day, index) =><p key={index}><span className="font-medium"></span> {day},</p> )}
+                 
+               </div>
+                
+               
+              </div>
+            
             <button
               onClick={() => handleReview(trainer)}
               className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -82,12 +103,12 @@ const BookedTrainer = () => {
         ))}
 
         {/* Class Info */}
-        <h3 className="text-xl font-semibold mb-2">Class Info</h3>
+        <h3 className="text-2xl font-semibold mb-2">Class Info</h3>
         <p className="mb-2"><strong>Name:</strong> <span >{data?.class_name}</span></p>
         <p className="mb-4"><strong>Details:</strong> <span>{data?.details}</span></p>
 
         {/* Slot Info */}
-        <h3 className="text-xl font-semibold mb-2">Slot Info</h3>
+        <h3 className="text-2xl font-semibold mb-2">Slot Info</h3>
         <p className="mb-4">
           <span className="font-medium">Name:</span> {data?.slotName} <br />
           <span className="font-medium">Time:</span> {data?.slotTime}
@@ -112,6 +133,7 @@ const BookedTrainer = () => {
           onClose={() => setIsModalOpen(false)}
         />
       )}
+    </div>
     </div>
   );
 };

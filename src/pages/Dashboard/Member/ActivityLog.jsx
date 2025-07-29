@@ -20,6 +20,7 @@ const ActivityLog = () => {
         }
     });
 
+    
     if (isLoading) return <Loader></Loader>;
 
     const openModal = (application) => {
@@ -33,19 +34,29 @@ const ActivityLog = () => {
     };
 
     return (
-        <div>
+        <div className='table_bg min-h-screen py-10'>
             {
                 app?.status === 'approved' ? <p className='text-red-600'>There is no activity log available.</p> : <div className="max-w-4xl mx-auto px-4 py-8">
-                    <h2 className="text-2xl font-bold mb-6">Activity Log</h2>
+                    <h2 className="text-4xl font-bold mb-10 text-gray-50">Activity Log</h2>
                     <div className="space-y-4">
 
                         <div
 
-                            className="flex items-center justify-between p-4 border rounded-lg shadow"
-                        >
+                            className="flex items-center justify-between p-6 border border-gray-300 rounded-lg shadow bg-gray-100"
+                        >  <div>
+                                <img
+                                    src={app?.photo || '/default-profile.png'}
+                                    alt={app?.name || 'Applicant Photo'}
+                                    className="w-20 h-20 rounded-full object-cover shadow-md hover:shadow-xl transition-shadow duration-300"
+                                />
+
+
+                            </div>
                             <div>
-                                <p className="text-lg font-medium">{app.name}</p>
-                                <p className="text-sm text-gray-500">Status: {app.status}</p>
+                                <p className="text-lg "><strong>Name:</strong> {app?.name}</p>
+                                <p className="text-lg "><strong>Email:</strong> {app?.email}</p>
+                                <p className="text-lg "><strong>Applied At:</strong> {new Date(app?.created_at).toISOString().split("T")[0]}</p>
+                                <p className="text-lg"><strong>Status:</strong> {app.status}</p>
                             </div>
 
                             {app.status === 'rejected' && (
