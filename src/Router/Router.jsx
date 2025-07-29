@@ -33,6 +33,7 @@ import AdminRoute from "../routes/AdminRoute";
 import TrainerRoute from "../routes/TrainerRoute";
 import MemberRoute from "../routes/MemberRoute";
 import AdminTrainerRoute from "../routes/AdminTrainerRoute";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashBoardHome";
 
 export const router = createBrowserRouter([
   {
@@ -111,7 +112,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Dashboard Home</div>
+        element: <DashboardHome></DashboardHome>
       },
       {
         path: 'payment/:slotId',
