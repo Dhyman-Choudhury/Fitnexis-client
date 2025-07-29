@@ -8,9 +8,13 @@ import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
 
 
 const Register = () => {
+     useEffect(() => {
+            document.title = "Register | FitNexis"
+        }, [])
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useAuth()
     // const [profilePic, setProfilePic] = useState('');

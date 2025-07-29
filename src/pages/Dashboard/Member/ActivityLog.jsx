@@ -35,8 +35,10 @@ const ActivityLog = () => {
 
     return (
         <div className='table_bg min-h-screen py-10'>
-            {
-                app?.status === 'approved' ? <p className='text-red-600'>There is no activity log available.</p> : <div className="max-w-4xl mx-auto px-4 py-8">
+           { app?.status? <>
+           {
+                app?.status === 'approved' ? <p className='text-red-600'>There is no activity log available.</p> : 
+                <div className="max-w-4xl mx-auto px-4 py-8">
                     <h2 className="text-4xl font-bold mb-10 text-gray-50">Activity Log</h2>
                     <div className="space-y-4">
 
@@ -93,6 +95,8 @@ const ActivityLog = () => {
                 </div>
 
             }
+           </> : <p className='text-red-600 text-center text-lg'>There is no activity log available.</p>}
+            
         </div>
 
     );
