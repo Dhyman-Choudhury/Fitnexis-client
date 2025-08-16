@@ -26,7 +26,7 @@ const AllTrainers = () => {
     if (isError) return <p className="text-red-500">Error loading trainers.</p>;
 
     return (
-        <div className="container mx-auto p-4 my-0.5 rounded-xl">
+        <div className="container mx-auto p-4 my-0.5 rounded-lg">
             <h1 className="text-3xl text-white font-bold mb-6">All Trainers</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {trainers?.map((trainer, i) => (

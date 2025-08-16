@@ -10,11 +10,11 @@ const useUserRole = () => {
         enabled: !authLoading && !!user?.email,
         queryKey: ['userRole', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/api/users/role/${user.email}`);
-            return res.data?.role; // Example: 'admin' | 'trainer' | 'member'
+            const res = await axiosSecure.get(`/api/users/role?email=${user.email}`);
+            return res?.data?.role; // Example: 'admin' | 'trainer' | 'member'
         },
     });
-
+    console.log(role)
     return { role, roleLoading: authLoading || roleLoading };
 };
 

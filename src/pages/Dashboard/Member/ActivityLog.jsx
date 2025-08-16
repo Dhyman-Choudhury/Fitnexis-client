@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Eye } from 'lucide-react';
@@ -11,6 +11,10 @@ const ActivityLog = () => {
     const axiosSecure = useAxiosSecure();
     const [selectedApplication, setSelectedApplication] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(()=>{
+            document.title= 'Activity Log | FitNexis'
+          },[])
 
     const { data: app = [], isLoading } = useQuery({
         queryKey: ['trainerApplications', user?.email],

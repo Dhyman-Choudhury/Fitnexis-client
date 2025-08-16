@@ -16,8 +16,8 @@ const AdminBalance = () => {
             const res = await axiosSecure.get('/admin/balance');
             const data = res.data;
             setChartData([
-                { name: 'Subscribers', value: data.totalNewsletterSubscribers },
-                { name: 'Paid Members', value: data.totalPaidMembers },
+                { name: 'Subscribers', value: data?.totalNewsletterSubscribers },
+                { name: 'Paid Members', value: data?.totalPaidMembers },
             ]);
             return data;
         },
@@ -31,7 +31,7 @@ const AdminBalance = () => {
 
             <div className="bg-white shadow-md rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-bold mb-2">Total Balance</h3>
-                <p className="text-3xl text-green-600 font-semibold">${balanceData.totalBalance.toFixed(2)}</p>
+                <p className="text-3xl text-green-600 font-semibold">${balanceData?.totalBalance?.toFixed(2)}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -39,11 +39,11 @@ const AdminBalance = () => {
                 <div className="bg-white shadow-md rounded-xl p-6">
                     <h4 className="text-lg font-semibold mb-4">🧾 Last 6 Transactions</h4>
                     <ul className="space-y-2">
-                        {balanceData.recentTransactions?.map((tx, index) => (
+                        {balanceData?.recentTransactions?.map((tx, index) => (
                             <li key={index} className="border-b py-2">
                                 <p><strong>Member:</strong> {tx.name}</p>
                                 <p><strong>Amount:</strong> ${tx.price}</p>
-                                <p className="text-sm text-gray-800">{new Date(tx.createdAt).toLocaleString()}</p>
+                                <p className="text-sm text-gray-800">{new Date(tx?.createdAt).toLocaleString()}</p>
                             </li>
                         ))}
                     </ul>

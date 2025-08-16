@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:3000', // 🔁 Change to your API base if needed
+  baseURL: `http://localhost:3000`, // 🔁 Change to your API base if needed
   withCredentials: true,            // Optional: only if using cookies
 });
 

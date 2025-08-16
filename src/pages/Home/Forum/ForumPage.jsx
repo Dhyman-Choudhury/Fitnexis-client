@@ -40,7 +40,7 @@ const ForumPage = () => {
     if (isLoading) return <Loader></Loader>;
 
     return (
-        <div className='container'>
+        <div className='container my-0.5 rounded-lg'>
         <div className="p-6 max-w-5xl mx-auto">
             <h2 className="text-4xl font-bold text-white mb-6">Community Forums</h2>
 

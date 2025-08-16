@@ -39,7 +39,7 @@ const FeaturedClasses = () => {
   });
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="p-10 bg-gray-200 rounded-2xl">
       <div className="mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center">Featured Classes</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

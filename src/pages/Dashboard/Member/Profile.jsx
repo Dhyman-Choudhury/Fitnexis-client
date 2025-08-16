@@ -9,7 +9,9 @@ const Profile = () => {
     const [profileData, setProfileData] = useState(null);
     const { register, handleSubmit, reset } = useForm();
     const axiosSecure = useAxiosSecure();
-
+     useEffect(()=>{
+        document.title= 'Profile | FitNexis'
+      },[])
     useEffect(() => {
         if (user?.email) {
             axiosSecure.get(`/api/profile?email=${user.email}`).then((res) => {

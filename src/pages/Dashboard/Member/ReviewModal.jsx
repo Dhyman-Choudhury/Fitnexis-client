@@ -4,34 +4,46 @@ import { toast, ToastContainer } from 'react-toastify';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Rating from 'react-rating';
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const ReviewModal = ({ trainer, users, onClose }) => {
     const { register, handleSubmit, setValue, reset } = useForm();
     const [rating, setRating] = useState(0);
     const axiosSecure = useAxiosSecure();
     
-    const onSubmit = async (data) => {
-        const review = {
-            ...data,
-            rating,
-            trainerId: trainer?.trainerId,
-            trainerName: trainer?.name,
-            userName: users?.user?.name,
-            userImage: users?.user?.photo,
-            date: new Date(),
-        };
-       console.log('Submitting Review:', review);
-
-        try {
-            await axiosSecure.post('/reviews', review);
-            toast.success('Review submitted successfully');
-            reset();
-            setRating(0);
-            onClose();
-        } catch (err) {
-            toast.error('Failed to submit review');
-        }
+   const onSubmit = async (data) => {
+    const review = {
+        ...data,
+        rating,
+        trainerId: trainer?.trainerId,
+        trainerName: trainer?.name,
+        userName: users?.user?.name,
+        userImage: users?.user?.photo,
+        date: new Date(),
     };
+
+
+    try {
+        await axiosSecure.post('/reviews', review);
+        Swal.fire({
+            icon: 'success',
+            title: 'Review Submitted!',
+            text: 'Your feedback has been successfully posted.',
+            timer: 2000,
+            showConfirmButton: false,
+        });
+        reset();
+        setRating(0);
+        onClose();
+    } catch (err) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Submission Failed',
+            text: 'There was an error submitting your review. Please try again later.',
+        });
+    }
+};
+
 
     const handleRatingChange = (value) => {
         setRating(value);
@@ -41,8 +53,8 @@ const ReviewModal = ({ trainer, users, onClose }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <ToastContainer />
-            <div className="bg-white p-6 rounded-lg w-96">
-                <h2 className="text-xl font-bold mb-4">Leave a Review for {trainer.name}</h2>
+            <div className="bg-white p-6 rounded-lg w-2xl">
+                <h2 className="text-xl font-bold mb-4">Leave a Review for {trainer?.name}</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Feedback Field */}
                     <textarea

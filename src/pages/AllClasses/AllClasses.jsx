@@ -42,7 +42,7 @@ const AllClasses = () => {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <div className="container mx-auto px-4 py-10 my-0.5 rounded-xl">
+    <div className="container mx-auto px-4 py-10 my-0.5 rounded-lg">
       <h2 className="text-3xl font-bold mb-6 text-white">All Fitness Classes</h2>
 
       {/* 🔍 Search Input */}
