@@ -39,9 +39,9 @@ const FeaturedClasses = () => {
   });
 
   return (
-    <section className="p-10 bg-gray-200 rounded-2xl">
+    <section className="py-10  px-6 bg-gray-200 rounded-2xl">
       <div className="mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Featured Classes</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Featured Classes</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {mergedData?.map((cls) => (
             <div key={cls._id} className="bg-white shadow-md rounded-xl p-5 space-y-3">
@@ -58,7 +58,7 @@ const FeaturedClasses = () => {
               <p className="text-xl font-medium mt-2">
                 <strong>Total Bookings:</strong> {cls.totalBookings}
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-700">
                 {cls?.details || 'No description available'}...
               </p>
               {/*.slice(0, 80)
