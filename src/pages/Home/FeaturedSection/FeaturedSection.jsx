@@ -70,7 +70,7 @@ const features = [
 
 const FeaturedSection = () => {
   return (
-    <section className="py-16 bg-gray-200 mt-10 rounded-2xl px-6">
+    <section className="py-10 bg-gray-200 mt-10 rounded-xl px-2 md:px-6">
       <h2 className='text-3xl md:text-4xl font-bold text-center mb-10'>Featured Section</h2>
       <div className=" text-center">
         <motion.h2
@@ -82,7 +82,7 @@ const FeaturedSection = () => {
           Why <span className="text-sky-400">Choose</span> Us?
         </motion.h2>
         <motion.p
-          className="text-gray-600 mb-12 max-w-xl mx-auto"
+          className="text-gray-600 mb-10 max-w-xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -94,7 +94,7 @@ const FeaturedSection = () => {
           {features.map((feature, i) => (
             <motion.div
               key={i}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-left"
+              className="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-left"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.2 }}

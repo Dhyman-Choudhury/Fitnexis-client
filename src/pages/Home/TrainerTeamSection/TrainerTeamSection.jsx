@@ -28,9 +28,9 @@ const TrainerTeamSection = () => {
   const topTrainers = trainers.slice(0, 3);
 
   return (
-    <section data-aos="flip-left" className="py-16 container mb-10 rounded-2xl">
+    <section data-aos="flip-left" className="py-10 bg-gray-200 mb-10 rounded-xl">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">Meet Our Trainers</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Meet Our Trainers</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {topTrainers.map((trainer) => (
             <div key={trainer._id} className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">

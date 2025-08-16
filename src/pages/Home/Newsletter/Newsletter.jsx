@@ -24,12 +24,12 @@ const Newsletter = () => {
   };
 
   return (
-    <div data-aos="flip-up" className=" bg-gradient-to-r from-[#234652] to-[#3c325d] py-16 px-4 text-center rounded-xl my-16 shadow-md w-full mx-auto">
+    <div data-aos="flip-up" className=" bg-gradient-to-r from-[#234652] to-[#3c325d] py-10 px-4 text-center rounded-xl my-10 shadow-md w-full mx-auto">
       <motion.h2
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl text-white font-bold mb-4"
+        className="text-4xl text-white font-bold mb-10"
       >
         Subscribe to <span className="text-sky-500">Our Newsletter</span>
       </motion.h2>
