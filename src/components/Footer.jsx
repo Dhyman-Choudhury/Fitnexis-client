@@ -26,7 +26,7 @@ const Footer = () => {
         </li>
         <li>
             <NavLink
-                to="/features"
+                to="/allTrainers"
                 className={({ isActive }) =>
                     `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
                 }
@@ -36,7 +36,7 @@ const Footer = () => {
         </li>
         <li>
             <NavLink
-                to="/classes"
+                to="/allClasses"
                 className={({ isActive }) =>
                     `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
                 }
@@ -49,7 +49,7 @@ const Footer = () => {
           <li>
             <NavLink
                 to="/dashboard"
-                className={({ isActive }) =>
+                className= {({ isActive }) =>
                     `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
                 }
             >
@@ -59,7 +59,7 @@ const Footer = () => {
       }
         <li>
             <NavLink
-                to="/community"
+                to="/forums"
                 className={({ isActive }) =>
                     `flex items-center py-2 rounded-md transition-colors duration-300 lg:px-4 text-gray-100 ${isActive ? 'bg-blue-300 text-white font-semibold' : 'hover:text-gray-300'}`
                 }
@@ -73,7 +73,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-950 text-gray-300 py-10">
-            <div className=" mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div className=" mx-auto px-2 lg:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 
                 {/* Logo and Description */}
                 <div>
@@ -99,7 +99,7 @@ const Footer = () => {
                 {/* Routes */}
                 <div>
                     <h2 className="text-xl font-bold text-white mb-3">Routes</h2>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-2 text-sm w-24">
                         {links}
                     </ul>
                 </div>
