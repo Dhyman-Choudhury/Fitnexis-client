@@ -17,30 +17,62 @@ const features = [
     description: 'Track your heart rate, calories, and steps with our integrated monitoring system for better insights.',
     icon: <HeartPulse className="w-10 h-10 text-sky-500" />,
   },
-  // 🔽 Add these 3 below
   {
     title: 'Diet & Nutrition Plans',
     description: 'Personalized meal plans and guidance from certified dietitians to help you stay on track with your goals.',
-    icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c1.657 0 3-.895 3-2s-1.343-2-3-2-3 .895-3 2 1.343 2 3 2z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v10m-6 0h12" /></svg>,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c1.657 0 3-.895 3-2s-1.343-2-3-2-3 .895-3 2 1.343 2 3 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v10m-6 0h12" />
+      </svg>
+    ),
   },
   {
     title: 'Flexible Schedules',
     description: 'Train at your own pace with a variety of class timings and flexible membership options tailored to your routine.',
-    icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3M16 7V3M4 11h16M5 19h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" /></svg>,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3M16 7V3M4 11h16M5 19h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+      </svg>
+    ),
   },
   {
     title: 'Mobile App Integration',
     description: 'Access workouts, progress, schedules, and support all through our powerful mobile app.',
-    icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16h10M7 8h10M7 12h4m5 8H8a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2z" /></svg>,
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16h10M7 8h10M7 12h4m5 8H8a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2z" />
+      </svg>
+    ),
+  },
+  // New card 1
+  {
+    title: 'Recovery & Rehab',
+    description: 'Physiotherapy guidance and recovery programs designed to prevent injuries and boost performance.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4v4m-4 0l4-4m-8 4H6v-4m4 4l-4-4" />
+      </svg>
+    ),
+  },
+  // New card 2
+  {
+    title: 'Expert Workshops',
+    description: 'Attend workshops with industry experts on strength, conditioning, mental wellness, and nutrition.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14v7" />
+      </svg>
+    ),
   },
 ];
 
-
 const FeaturedSection = () => {
   return (
-    <section className="py-16 bg-gray-200">
+    <section className="py-16 bg-gray-200 mt-10 rounded-2xl px-6">
       <h2 className='text-3xl md:text-4xl font-bold text-center mb-10'>Featured Section</h2>
-      <div className="max-w-6xl mx-auto px-4 text-center">
+      <div className=" text-center">
         <motion.h2
           className="text-2xl md:text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -58,7 +90,7 @@ const FeaturedSection = () => {
           Discover the key features that make FitNexis your go-to destination for fitness, wellness, and community.
         </motion.p>
 
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
           {features.map((feature, i) => (
             <motion.div
               key={i}
