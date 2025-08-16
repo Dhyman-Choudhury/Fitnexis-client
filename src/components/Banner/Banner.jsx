@@ -37,7 +37,7 @@ const Banner = () => {
     }, []);
 
     return (
-        <section className="relative w-full h-[90vh] overflow-hidden">
+        <section className="relative w-full h-[90vh] overflow-hidden mx-auto">
             {/* Background Image */}
             <div className="absolute inset-0 z-0 transition-all duration-1000">
                 <img
