@@ -26,7 +26,7 @@ const AdminBalance = () => {
     if (isLoading) return <Loader></Loader> ;
 
     return (
-        <div className="table_bg min-h-screen p-10 ">
+        <div className="night_text table_bg min-h-screen p-10 ">
             <h2 className="text-4xl font-bold mb-6 text-white">💰 Admin Financial Overview</h2>
 
             <div className="bg-white shadow-md rounded-xl p-6 mb-8">

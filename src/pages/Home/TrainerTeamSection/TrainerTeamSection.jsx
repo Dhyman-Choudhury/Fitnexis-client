@@ -28,7 +28,7 @@ const TrainerTeamSection = () => {
   const topTrainers = trainers.slice(0, 3);
 
   return (
-    <section data-aos="flip-left" className="py-10 bg-gray-200 mb-10 rounded-xl">
+    <section data-aos="flip-left" className=" night_text py-10 bg-gray-200 mb-10 rounded-xl">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Meet Our Trainers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

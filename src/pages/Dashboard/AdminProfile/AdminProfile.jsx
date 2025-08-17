@@ -25,7 +25,7 @@ const AdminProfile = () => {
     if (!profileData) return <Loader />;
 
     return (
-        <div className="min-h-screen p-4 md:p-10 table_bg">
+        <div className="night_text min-h-screen p-4 md:p-10 table_bg">
             <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10">
                 <h2 className="text-3xl font-bold mb-8 text-gray-800">Admin Profile</h2>
 

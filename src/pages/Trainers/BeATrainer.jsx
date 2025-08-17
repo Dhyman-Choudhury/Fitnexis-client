@@ -88,7 +88,7 @@ const BeATrainer = () => {
   };
 
   return (
-    <div className='container bg-[#18353e] w-full p-10 my-0.5 rounded-lg'>
+    <div className='night_text container bg-[#18353e] w-full p-10 my-0.5 rounded-lg'>
       <div className="max-w-3xl mx-auto p-6 bg-gray-200 rounded shadow-md">
         <ToastContainer />
         <h2 className="text-2xl font-semibold mb-4">Apply to Become a Trainer</h2>

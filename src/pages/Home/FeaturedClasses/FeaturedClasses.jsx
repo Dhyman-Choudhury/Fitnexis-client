@@ -39,7 +39,7 @@ const FeaturedClasses = () => {
   });
 
   return (
-    <section className="py-10 px-2  md:px-6 bg-gray-200 rounded-xl">
+    <section className="night_text py-10 px-2  md:px-6 bg-gray-200 rounded-xl">
       <div className="mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Featured Classes</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">

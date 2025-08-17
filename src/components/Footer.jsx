@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { NavLink, } from 'react-router';
 import FitnessLogo from './FitnessLogo';
 import useAuth from '../hooks/useAuth';
@@ -108,10 +108,10 @@ const Footer = () => {
                 <div>
                     <h2 className="text-xl font-bold text-white mb-3">Follow Us</h2>
                     <div className="flex items-center gap-4 mt-2 text-2xl">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition"><FaFacebook /></a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 transition"><FaTwitter /></a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition"><FaInstagram /></a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition"><FaLinkedin /></a>
+                        <a href="https://www.facebook.com/dhimana.caudhuri.2025" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition"><FaFacebook /></a>
+                        <a href="https://x.com/Dhyman2029" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 transition"><FaTwitter /></a>
+                        <a href="https://github.com/Dhyman-Choudhury" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition"><FaGithub /></a>
+                        <a href="https://www.linkedin.com/in/dhyman-ch" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300 transition"><FaLinkedin /></a>
                     </div>
                 </div>
             </div>

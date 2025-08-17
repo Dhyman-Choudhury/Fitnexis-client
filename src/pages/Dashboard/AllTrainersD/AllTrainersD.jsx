@@ -51,12 +51,12 @@ const AllTrainersD = () => {
     if (isError) return <p>Failed to load trainers.</p>;
 
     return (
-        <div className="px-4 table_bg min-h-screen py-10">
+        <div className="night_text px-4 table_bg min-h-screen py-10">
             <h1 className="text-4xl text-white font-bold mb-4">All Trainers</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full bg-white border">
                     <thead>
-                        <tr className="bg-gray-200">
+                        <tr className="bg-gray-200 night_text">
                             <th className="p-2 border">#</th>
                             <th className="p-2 border">Photo</th>
                             <th className="p-2 border">Name</th>

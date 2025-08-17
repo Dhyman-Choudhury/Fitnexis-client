@@ -65,10 +65,10 @@ const TrainerManageSlot = () => {
     return (
         <div className="p-4">
             <ToastContainer/>
-            <h2 className="text-2xl font-bold mb-6 text-center">Manage Trainer Slots</h2>
+            <h2 className="night_text text-2xl font-bold mb-6 text-center">Manage Trainer Slots</h2>
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-                    <thead className="bg-blue-500 text-white text-left">
+                    <thead className="bg-blue-500 text-white text-left ">
                         <tr>
                             <th className="px-4 py-2">#</th>
                             <th className="px-4 py-2">Slot Name</th>
@@ -88,7 +88,7 @@ const TrainerManageSlot = () => {
                             </tr>
                         ) : (
                             slots.map((slot, idx) => (
-                                <tr key={slot._id} className="border-t hover:bg-gray-50">
+                                <tr key={slot._id} className="border-t hover:bg-gray-50 night_text">
                                     <td className="px-4 py-2">{idx + 1}</td>
                                     <td className="px-4 py-2">{slot.slotName}</td>
                                     <td className="px-4 py-2">{slot.slotTime}</td>

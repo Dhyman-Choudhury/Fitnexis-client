@@ -19,7 +19,7 @@ const AppliedTrainerList = () => {
     if (isError) return <p>Failed to load applications</p>;
 
     return (
-         <div className="table_bg min-h-screen py-10">
+         <div className="night_text table_bg min-h-screen py-10">
         <div className="p-6 max-w-6xl mx-auto">
             <h2 className="text-2xl font-semibold mb-6">Applied Trainers</h2>
             {applications.length === 0 ? (

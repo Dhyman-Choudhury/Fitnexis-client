@@ -71,10 +71,10 @@ const features = [
 const FeaturedSection = () => {
   return (
     <section className="py-10 bg-gray-200 mt-10 rounded-xl px-2 md:px-6">
-      <h2 className='text-3xl md:text-4xl font-bold text-center mb-10'>Featured Section</h2>
+      <h2 className='text-3xl md:text-4xl font-bold text-center mb-10 night_text'>Featured Section</h2>
       <div className=" text-center">
         <motion.h2
-          className="text-2xl md:text-3xl font-bold mb-6"
+          className="text-2xl md:text-3xl font-bold mb-6 night_text"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -94,7 +94,7 @@ const FeaturedSection = () => {
           {features.map((feature, i) => (
             <motion.div
               key={i}
-              className="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-left"
+              className="night_text bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition duration-300 text-left"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.2 }}

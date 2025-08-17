@@ -54,7 +54,7 @@ const MakeAdmin = () => {
     };
 
     return (
-        <div className="px-4 table_bg min-h-screen py-10">
+        <div className="night_text px-4 table_bg min-h-screen py-10">
         <div className="p-6 max-w-5xl mx-auto">
             <h2 className="text-2xl font-semibold mb-4">Make Admin</h2>
 

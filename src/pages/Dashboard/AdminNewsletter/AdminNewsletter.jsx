@@ -16,7 +16,7 @@ const AdminNewsletter = () => {
   });
 
   return (
-    <div className="table_bg min-h-screen py-10">
+    <div className="night_text table_bg min-h-screen py-10">
     <div className="p-4 md:p-6">
       <h2 className="text-4xl text-white font-bold mb-5">📬 All Newsletter Subscribers</h2>
 

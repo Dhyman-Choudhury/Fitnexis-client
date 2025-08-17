@@ -64,7 +64,7 @@ const AdminOverview = () => {
     return <Loader />;
 
   return (
-    <div className="min-h-screen py-5 px-2 md:px-3 lg:px-5 bg-gray-50">
+    <div className="night_text min-h-screen py-5 px-2 md:px-3 lg:px-5 bg-gray-50">
       <h1 className="text-3xl md:text-4xl font-bold mb-8 text-gray-800">Admin Dashboard Overview</h1>
 
       {/* Stat Cards */}

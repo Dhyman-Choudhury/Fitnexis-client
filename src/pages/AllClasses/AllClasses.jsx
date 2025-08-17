@@ -61,7 +61,7 @@ const AllClasses = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-10 my-0.5 rounded-lg flex flex-col md:flex-row gap-6">
+    <div className="night_text container mx-auto px-4 py-10 my-0.5 rounded-lg flex flex-col md:flex-row gap-6">
       {/* Sidebar */}
       <div className="w-full md:w-1/4 mb-6 md:mb-0 flex flex-col gap-4 mt-10 md:mt-20">
         <form onSubmit={handleSearchSubmit} className="relative">

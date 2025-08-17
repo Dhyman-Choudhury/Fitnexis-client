@@ -40,7 +40,7 @@ const ForumPage = () => {
     if (isLoading) return <Loader></Loader>;
 
     return (
-        <div className='container my-0.5 py-10 px-2 md:px-6 rounded-lg'>
+        <div className='night_text w-full container my-0.5 py-10 px-2 md:px-6 rounded-lg'>
         <div className=" max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">Community Forums</h2>
 

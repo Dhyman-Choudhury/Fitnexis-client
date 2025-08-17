@@ -75,7 +75,7 @@ const AllTrainers = () => {
   );
 
   return (
-    <div className="container mx-auto px-2 md:px-6 my-0.5 rounded-lg">
+    <div className="night_text container mx-auto px-2 md:px-6 my-0.5 rounded-lg">
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Sidebar Filters */}
         <div className="w-full lg:w-64 bg-gray-400 p-4 rounded-lg space-y-4 h-fit mt-6 lg:mt-16">

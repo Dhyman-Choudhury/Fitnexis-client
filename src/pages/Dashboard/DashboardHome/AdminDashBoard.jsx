@@ -44,7 +44,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen p-4 md:p-10 table_bg">
+    <div className="night_text min-h-screen p-4 md:p-10 table_bg">
       <h1 className="text-4xl font-bold text-white mb-8">Dashboard Overview</h1>
 
       {/* Top Stat Cards */}

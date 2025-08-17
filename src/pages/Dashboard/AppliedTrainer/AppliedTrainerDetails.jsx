@@ -77,7 +77,7 @@ const AppliedTrainerDetails = () => {
     if (!application) return <p>Application not found.</p>;
 
     return (
-        <div className="p-6 max-w-4xl mx-auto">
+        <div className="night_text p-6 max-w-4xl mx-auto">
             <h2 className="text-2xl font-semibold mb-4">Application Details</h2>
 
             <div className="mb-6 space-y-2">

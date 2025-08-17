@@ -67,7 +67,7 @@ const AddClass = () => {
   };
 
   return (
-    <div className="table_bg min-h-screen py-10">
+    <div className="night_text table_bg min-h-screen py-10 px-2 sm:px-4 md:px-6">
       <ToastContainer />
       <div className="p-6 max-w-2xl mx-auto bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Add New Class</h2>

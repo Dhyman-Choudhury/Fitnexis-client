@@ -43,7 +43,7 @@ const AddForumModal = () => {
     if (isLoading) return <Loader />;
 
     return (
-        <div className="table_bg min-h-screen p-10">
+        <div className="night_text table_bg min-h-screen p-10">
             <ToastContainer />
             <h1 className="text-4xl text-white font-bold mb-10">Add New Forum Post</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

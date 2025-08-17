@@ -47,7 +47,7 @@ const BookedTrainer = () => {
     // return <p className="text-center text-red-500">No booked trainer found.</p>;
 
   return (
-    <div className='table_bg min-h-screen py-10'>
+    <div className='night_text table_bg min-h-screen py-10'>
     <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-4xl text-gray-50 font-bold mb-10 text-center">Booked Trainer Details</h2>
 

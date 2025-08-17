@@ -57,7 +57,7 @@ const MemberOverview = () => {
   ];
 
   return  (
-     <div className="min-h-screen bg-gray-100 py-10 px-4">
+     <div className="night_text min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-6xl mx-auto space-y-10">
         
         {/* Profile Section */}
@@ -69,7 +69,7 @@ const MemberOverview = () => {
           <img
             src={profile?.photo}
             alt={profile?.name}
-            className="w-32 h-32 rounded-full object-cover border-4 border-indigo-600 shadow-md"
+            className="w-32 h-32 rounded-full object-cover border-2 border-gray-300 shadow-md"
           />
           <div className="flex-1">
             <h2 className="text-3xl font-bold text-gray-800">{profile?.name}</h2>

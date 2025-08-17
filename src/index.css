@@ -1,6 +1,9 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-
+  @plugin "daisyui" {
+   themes: light --default, dark --prefersdark, cupcake, aqua, cyberpunk, synthwave, abyss, retro;
+ }
 
 .active{
   background-color:#60A5FA  ; 
@@ -46,5 +49,20 @@
   font-family: sans-serif;
   font-weight: 800;
 }
+@import url('https://fonts.googleapis.com/css?family=Noto%20Sans%20NKo:700|Noto%20Sans%20NKo:400');
+
+body {
+  font-family: 'Noto Sans NKo';
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Noto Sans NKo';
+  font-weight: 700;
+}
+.night_text{
+  color: black;
+}
+
 
 

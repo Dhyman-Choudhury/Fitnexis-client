@@ -38,7 +38,7 @@ const ActivityLog = () => {
     };
 
     return (
-        <div className='table_bg min-h-screen py-10'>
+        <div className='night_text table_bg min-h-screen py-10'>
            { app?.status? <>
            {
                 app?.status === 'approved' ? <p className='text-red-600'>There is no activity log available.</p> : 
