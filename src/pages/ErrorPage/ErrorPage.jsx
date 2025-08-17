@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 
 const ErrorPage = () => {
   const navigate = useNavigate();
-
-  // State to start pulsate animation on the whole 404 after digits slide in
   const [pulsateGroup, setPulsateGroup] = useState(false);
 
   useEffect(() => {
@@ -14,65 +12,42 @@ const ErrorPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Slide in animations for individual digits
   const left4Variant = {
     hidden: { x: -200, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { type: "spring", stiffness: 100, delay: 0.2 } },
   };
-
   const zeroVariant = {
     hidden: { y: -300, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 120, delay: 0.4 } },
   };
-
   const right4Variant = {
     hidden: { x: 200, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { type: "spring", stiffness: 100, delay: 0.6 } },
   };
-
-  // Pulsate animation for group and button
   const pulsateVariants = {
-    initial: {
-      scale: 1,
-      boxShadow: "none",
-    },
+    initial: { scale: 1, boxShadow: "none" },
     animate: {
       scale: [1, 1.05, 1],
-      boxShadow: [
-        "0 0 8px #7f5af0",
-        "0 0 20px #7f5af0",
-        "0 0 8px #7f5af0",
-      ],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: "easeInOut",
-      },
+      boxShadow: ["0 0 8px #7f5af0","0 0 20px #7f5af0","0 0 8px #7f5af0"],
+      transition: { duration: 2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
     },
   };
-
   const flickerVariants = {
     flicker: {
       opacity: [1, 0.85, 1, 0.9, 1],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "mirror",
-      },
+      transition: { duration: 2, repeat: Infinity, repeatType: "mirror" },
     },
   };
 
-  const glitchTextStyle = {
+  // Common glitch text style (only stroke & user-select inline)
+  const glitchTextBase = {
     WebkitTextStroke: "2px #7f5af0",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
     userSelect: "none",
     color: "transparent",
     position: "relative",
-    fontWeight: "900",
-    fontSize: "12rem",
+    fontWeight: 900,
   };
-
   const glitchLayerTop = {
     position: "absolute",
     top: 0,
@@ -81,7 +56,6 @@ const ErrorPage = () => {
     opacity: 0.7,
     clipPath: "polygon(0 0, 100% 0, 100% 45%, 0 45%)",
   };
-
   const glitchLayerBottom = {
     position: "absolute",
     top: 0,
@@ -92,20 +66,21 @@ const ErrorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-[#0e0e1a] via-[#1a1a2e] to-[#16213e] flex flex-col justify-center items-center px-6 text-center">
-      {/* 404 group - pulsate after digits slide in */}
+    <div className="min-h-screen bg-gradient-to-tr from-[#0e0e1a] via-[#1a1a2e] to-[#16213e] flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 text-center">
+      {/* 404 group */}
       <motion.div
         variants={pulsateVariants}
         initial="initial"
         animate={pulsateGroup ? "animate" : ""}
-        className="flex select-none"
+        className="flex select-none flex-wrap justify-center"
       >
         {/* Left 4 */}
         <motion.div
           variants={left4Variant}
           initial="hidden"
           animate="visible"
-          style={glitchTextStyle}
+          style={glitchTextBase}
+          className="text-8xl sm:text-9xl md:text-[10rem] lg:text-[12rem]"
         >
           4
           <span aria-hidden="true" style={glitchLayerTop}>4</span>
@@ -117,7 +92,8 @@ const ErrorPage = () => {
           variants={zeroVariant}
           initial="hidden"
           animate="visible"
-          style={{ ...glitchTextStyle, margin: "0 2rem" }}
+          style={glitchTextBase}
+          className="mx-4 sm:mx-6 md:mx-8 text-8xl sm:text-9xl md:text-[10rem] lg:text-[12rem]"
         >
           0
           <span aria-hidden="true" style={glitchLayerTop}>0</span>
@@ -129,7 +105,8 @@ const ErrorPage = () => {
           variants={right4Variant}
           initial="hidden"
           animate="visible"
-          style={glitchTextStyle}
+          style={glitchTextBase}
+          className="text-8xl sm:text-9xl md:text-[10rem] lg:text-[12rem]"
         >
           4
           <span aria-hidden="true" style={glitchLayerTop}>4</span>
@@ -137,30 +114,29 @@ const ErrorPage = () => {
         </motion.div>
       </motion.div>
 
-      {/* Flickering message */}
+      {/* Message */}
       <motion.p
         variants={flickerVariants}
         animate="flicker"
-        className="text-lg md:text-2xl text-white max-w-xl mb-8 font-semibold mt-8"
+        className="text-base sm:text-lg md:text-2xl text-white max-w-md sm:max-w-lg md:max-w-xl mb-6 sm:mb-8 font-semibold mt-6 sm:mt-8"
       >
-        The page you are looking for might have been removed, had its name
-        changed, or is temporarily unavailable.
+        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
       </motion.p>
 
-      {/* Pulsating button */}
+      {/* Button */}
       <motion.div variants={pulsateVariants} animate="animate" whileHover={{ scale: 1.1 }}>
         <Button
           pill
           color="purple"
           size="lg"
           onClick={() => navigate("/")}
-          className="shadow-lg"
+          className="shadow-lg text-sm sm:text-base md:text-lg"
         >
           Take Me Home
         </Button>
       </motion.div>
 
-      <p className="mt-16 text-gray-400 text-sm select-none">
+      <p className="mt-12 sm:mt-16 text-gray-400 text-xs sm:text-sm select-none">
         &copy; {new Date().getFullYear()} FitNexis. All rights reserved.
       </p>
     </div>
