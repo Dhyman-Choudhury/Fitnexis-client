@@ -15,6 +15,7 @@ import {
     AiOutlinePlusCircle,
     AiOutlineUserSwitch,
     AiOutlinePieChart,
+    AiOutlineBarChart,
 } from 'react-icons/ai';
 import { MdAddToPhotos, MdManageAccounts } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa";
@@ -123,6 +124,11 @@ const DashboardLayout = () => {
                             <AiOutlineUser size={20} />
                             Profile
                         </NavLink>
+                        <NavLink to="/dashboard/memberOverview" className={linkClasses}>
+                            <AiOutlineBarChart size={20} />
+                            Member Overview
+                        </NavLink>
+
 
                         <NavLink to="/dashboard/activityLog" className={linkClasses}>
                             <AiOutlineHistory size={20} />

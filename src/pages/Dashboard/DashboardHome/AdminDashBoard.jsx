@@ -39,8 +39,8 @@ const AdminDashboard = () => {
     return <Loader />;
 
   const chartData = [
-    { name: "Subscribers", value: subscribers.length },
-    { name: "Paid Members", value: balanceData.totalPaidMembers || 0 },
+    { name: "Subscribers", value: subscribers?.length },
+    { name: "Paid Members", value: balanceData?.totalPaidMembers || 0 },
   ];
 
   return (
@@ -49,22 +49,22 @@ const AdminDashboard = () => {
 
       {/* Top Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+        <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center gap-4">
           <p className="text-gray-500 font-semibold">Total Trainers</p>
-          <p className="text-2xl font-bold">{trainers.length}</p>
+          <p className="text-2xl font-bold">{trainers?.length}</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+        <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center gap-4">
           <p className="text-gray-500 font-semibold">Pending Applications</p>
           <p className="text-2xl font-bold">{applications.length}</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+        <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center gap-4">
           <p className="text-gray-500 font-semibold">Newsletter Subscribers</p>
           <p className="text-2xl font-bold">{subscribers.length}</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+        <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center gap-4">
           <p className="text-gray-500 font-semibold">Total Balance</p>
           <p className="text-2xl font-bold">
             ${balanceData.totalBalance?.toFixed(2) || 0}

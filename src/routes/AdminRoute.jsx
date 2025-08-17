@@ -1,11 +1,10 @@
-import React, { Children } from 'react';
+import { Navigate } from 'react-router'; // ✅ use react-router-dom
 import useAuth from '../hooks/useAuth';
-import useUserRole from '../hooks/useUserRole';
-import { Navigate } from 'react-router';
+import useUserRole from '../hooks/useUserRole'; // ✅ correct import
 import Loader from '../components/shared/Loader';
 
-const AdminRoute = ({ children }) => {
-    const { user, loading } = useAuth();
+const MemberRoute = ({ children }) => {
+   const { user, loading } = useAuth();
     const { role, roleLoading } = useUserRole();
 
     if (loading || roleLoading) {
@@ -18,5 +17,4 @@ const AdminRoute = ({ children }) => {
 
     return children;
 };
-
-export default AdminRoute;
+export default MemberRoute;

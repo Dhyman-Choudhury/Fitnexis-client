@@ -40,6 +40,7 @@ import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
 import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
 import AdminOverview from "../pages/Dashboard/OverView/AdminOverview";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
+import MemberOverview from "../pages/Dashboard/Member/MemberOverview";
 
 export const router = createBrowserRouter([
   {
@@ -202,6 +203,10 @@ export const router = createBrowserRouter([
       {
         path: 'profile',
         element:<MemberRoute><Profile></Profile></MemberRoute> 
+      },
+      {
+        path: 'memberOverview',
+        element:<MemberRoute><MemberOverview></MemberOverview></MemberRoute> 
       },
       {
         path: 'activityLog',

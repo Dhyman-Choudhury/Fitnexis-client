@@ -64,11 +64,11 @@ const AdminOverview = () => {
     return <Loader />;
 
   return (
-    <div className="min-h-screen p-4 md:p-10 bg-gray-50">
+    <div className="min-h-screen py-5 px-2 md:px-3 lg:px-5 bg-gray-50">
       <h1 className="text-3xl md:text-4xl font-bold mb-8 text-gray-800">Admin Dashboard Overview</h1>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5 mb-8 ">
         <StatCard title="💰 Total Balance" value={`$${balanceData?.totalBalance?.toFixed(2) || 0}`} />
         <StatCard title="🏋️ Paid Members" value={balanceData?.totalPaidMembers || 0} />
         <StatCard title="📬 Subscribers" value={balanceData?.totalNewsletterSubscribers || 0} />

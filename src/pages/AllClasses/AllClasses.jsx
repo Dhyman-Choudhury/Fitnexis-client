@@ -11,7 +11,7 @@ const AllClasses = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [searchInput, setSearchInput] = useState('');
-  const [sortBy, setSortBy] = useState('name'); // default sort by name
+  const [sortBy, setSortBy] = useState('name');
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
@@ -33,19 +33,10 @@ const AllClasses = () => {
     onError: () => Swal.fire('Error', 'Failed to load classes', 'error'),
   });
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    setPage(1);
-    setSearch(searchInput.trim());
-  };
-
-  if (isLoading) return <Loader />;
-  if (isError) return <div className="text-center py-10 text-red-500">Error loading classes</div>;
-
   const { classes = [], total = 0, limit = 6 } = classesData;
   const totalPages = Math.ceil(total / limit);
 
-  // Sorting classes based on selected criteria
+  // Always call hooks before returning anything
   const sortedClasses = useMemo(() => {
     return [...classes].sort((a, b) => {
       if (sortBy === 'name') return a.class_name.localeCompare(b.class_name);
@@ -54,12 +45,25 @@ const AllClasses = () => {
     });
   }, [classes, sortBy]);
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setPage(1);
+    setSearch(searchInput.trim());
+  };
+
+  // Now render conditionally INSIDE JSX
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <div className="text-center py-10 text-red-500">Error loading classes</div>;
+  }
+
   return (
     <div className="container mx-auto px-4 py-10 my-0.5 rounded-lg flex flex-col md:flex-row gap-6">
-      
-      {/* 🟦 Left Sidebar */}
+      {/* Sidebar */}
       <div className="w-full md:w-1/4 mb-6 md:mb-0 flex flex-col gap-4 mt-10 md:mt-20">
-        {/* Search */}
         <form onSubmit={handleSearchSubmit} className="relative">
           <input
             type="text"
@@ -71,7 +75,6 @@ const AllClasses = () => {
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </form>
 
-        {/* Sorting */}
         <div className="flex flex-col gap-2">
           <label className="font-semibold text-gray-700">Sort By:</label>
           <select
@@ -85,7 +88,7 @@ const AllClasses = () => {
         </div>
       </div>
 
-      {/* 🟩 Main Content */}
+      {/* Main content */}
       <div className="flex-1">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-white">All Fitness Classes</h2>
 
@@ -99,14 +102,12 @@ const AllClasses = () => {
               transition={{ duration: 0.4, ease: 'easeOut' }}
               whileHover={{ scale: 1.02 }}
             >
-              {/* Top content grows to fill space */}
               <div className="flex-grow">
                 <h3 className="text-xl font-semibold mb-2">{classItem.class_name}</h3>
                 <p className="text-sm text-gray-600 mb-3">{classItem.details}</p>
                 <p className="text-sm text-gray-500 mb-2">Slot: {classItem.slotName} ({classItem.slotTime})</p>
               </div>
 
-              {/* Trainers at the bottom */}
               <div className="flex items-center gap-2 mt-4 flex-wrap">
                 {(classItem.trainers || []).slice(0, 5).map(trainer => (
                   <Link key={trainer.trainerId} to={`/trainers/${trainer.trainerId}`} title={trainer.name}>
@@ -122,7 +123,6 @@ const AllClasses = () => {
           ))}
         </div>
 
-        {/* 🔢 Pagination */}
         <div className="flex justify-center mt-8 space-x-2">
           {Array.from({ length: totalPages }, (_, i) => (
             <button
