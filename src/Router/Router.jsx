@@ -39,6 +39,7 @@ import ContactUs from "../pages/quickLinks/ContactUs";
 import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
 import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
 import AdminOverview from "../pages/Dashboard/OverView/AdminOverview";
+import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 
 export const router = createBrowserRouter([
   {
@@ -144,6 +145,11 @@ export const router = createBrowserRouter([
         path: 'overview',
 
         element:<AdminRoute><AdminOverview></AdminOverview></AdminRoute> ,
+      },
+      {
+        path: 'adminProfile',
+
+        element:<AdminRoute><AdminProfile></AdminProfile></AdminRoute> ,
       },
       {
         path: 'allTrainersD',

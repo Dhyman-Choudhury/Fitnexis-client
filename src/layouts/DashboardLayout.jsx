@@ -65,6 +65,10 @@ const DashboardLayout = () => {
                             <AiOutlinePieChart size={20} />
                             Dashboard Overview
                         </NavLink>
+                        <NavLink to="/dashboard/adminProfile" className={linkClasses}>
+                            <AiOutlineUser size={20} />
+                            Admin Profile
+                        </NavLink>
                         <NavLink to="/dashboard/allTrainersD" className={linkClasses}>
                             <AiOutlineTeam size={20} />
                             All Trainers
