@@ -38,6 +38,7 @@ import About from "../pages/Home/About/About";
 import ContactUs from "../pages/quickLinks/ContactUs";
 import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
 import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
+import AdminOverview from "../pages/Dashboard/OverView/AdminOverview";
 
 export const router = createBrowserRouter([
   {
@@ -138,6 +139,11 @@ export const router = createBrowserRouter([
         path: 'payment/:slotId',
 
         element: <PrivateRoutes><Payment /></PrivateRoutes>
+      },
+      {
+        path: 'overview',
+
+        element:<AdminRoute><AdminOverview></AdminOverview></AdminRoute> ,
       },
       {
         path: 'allTrainersD',

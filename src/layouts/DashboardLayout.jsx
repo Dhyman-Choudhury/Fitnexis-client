@@ -14,6 +14,7 @@ import {
     AiOutlineHistory,
     AiOutlinePlusCircle,
     AiOutlineUserSwitch,
+    AiOutlinePieChart,
 } from 'react-icons/ai';
 import { MdAddToPhotos, MdManageAccounts } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa";
@@ -24,7 +25,7 @@ const DashboardLayout = () => {
     useEffect(() => {
         document.title = 'Dashboard | FitNexis'
     }, [])
-    const {role, roleLoading } = useUserRole()
+    const { role, roleLoading } = useUserRole()
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const linkClasses = ({ isActive }) =>
@@ -59,69 +60,74 @@ const DashboardLayout = () => {
 
                     {/* Admin */}
                     {!roleLoading && role === 'admin' && <>
-                    <NavLink to="/dashboard/allTrainersD" className={linkClasses}>
-                        <AiOutlineTeam size={20} />
-                        All Trainers
-                    </NavLink>
-                    <NavLink to="/dashboard/makeAdmin" className={linkClasses}>
-                        <AiOutlineUserAdd size={20} />
-                        Make Admin
-                    </NavLink>
 
-                    <NavLink to="/dashboard/adminNewsletter" className={linkClasses}>
-                        <AiOutlineMail size={20} />
-                        Admin Newsletter
-                    </NavLink>
+                        <NavLink to="/dashboard/overview" className={linkClasses}>
+                            <AiOutlinePieChart size={20} />
+                            Dashboard Overview
+                        </NavLink>
+                        <NavLink to="/dashboard/allTrainersD" className={linkClasses}>
+                            <AiOutlineTeam size={20} />
+                            All Trainers
+                        </NavLink>
+                        <NavLink to="/dashboard/makeAdmin" className={linkClasses}>
+                            <AiOutlineUserAdd size={20} />
+                            Make Admin
+                        </NavLink>
 
-                    <NavLink to="/dashboard/appliedTrainers" className={linkClasses}>
-                        <AiOutlineFileSearch size={20} />
-                        Applied Trainers
-                    </NavLink>
-                    <NavLink to="/dashboard/adminBalance" className={linkClasses}>
-                        <FaMoneyBillWave size={20} />
-                        Admin Balance
-                    </NavLink>
-                    <NavLink to="/dashboard/adminAddClass" className={linkClasses}>
-                        <AiOutlinePlus size={20} />
-                        Add Class
-                    </NavLink>
-                    <NavLink to="/dashboard/addForum" className={linkClasses}>
-                        <AiOutlinePlusCircle size={20} />
-                        Add New Forum
-                    </NavLink>
+                        <NavLink to="/dashboard/adminNewsletter" className={linkClasses}>
+                            <AiOutlineMail size={20} />
+                            Admin Newsletter
+                        </NavLink>
+
+                        <NavLink to="/dashboard/appliedTrainers" className={linkClasses}>
+                            <AiOutlineFileSearch size={20} />
+                            Applied Trainers
+                        </NavLink>
+                        <NavLink to="/dashboard/adminBalance" className={linkClasses}>
+                            <FaMoneyBillWave size={20} />
+                            Admin Balance
+                        </NavLink>
+                        <NavLink to="/dashboard/adminAddClass" className={linkClasses}>
+                            <AiOutlinePlus size={20} />
+                            Add Class
+                        </NavLink>
+                        <NavLink to="/dashboard/addForum" className={linkClasses}>
+                            <AiOutlinePlusCircle size={20} />
+                            Add New Forum
+                        </NavLink>
                     </>}
 
                     {/* Trainer */}
                     {!roleLoading && role === 'trainer' && <>
-                    <NavLink to="/dashboard/trainerAddSlot" className={linkClasses}>
-                        <MdAddToPhotos size={20} />
-                        Trainer Add Slot
-                    </NavLink>
-                    <NavLink to="/dashboard/trainerManageSlots" className={linkClasses}>
-                        <MdManageAccounts size={20} />
-                        Manage Slots
-                    </NavLink>
-                    <NavLink to="/dashboard/addForum" className={linkClasses}>
-                        <AiOutlinePlusCircle size={20} />
-                        Add New Forum
-                    </NavLink>
+                        <NavLink to="/dashboard/trainerAddSlot" className={linkClasses}>
+                            <MdAddToPhotos size={20} />
+                            Trainer Add Slot
+                        </NavLink>
+                        <NavLink to="/dashboard/trainerManageSlots" className={linkClasses}>
+                            <MdManageAccounts size={20} />
+                            Manage Slots
+                        </NavLink>
+                        <NavLink to="/dashboard/addForum" className={linkClasses}>
+                            <AiOutlinePlusCircle size={20} />
+                            Add New Forum
+                        </NavLink>
                     </>}
 
                     {/* Member */}
                     {!roleLoading && role === 'member' && <>
-                    <NavLink to="/dashboard/profile" className={linkClasses}>
-                        <AiOutlineUser size={20} />
-                        Profile
-                    </NavLink>
+                        <NavLink to="/dashboard/profile" className={linkClasses}>
+                            <AiOutlineUser size={20} />
+                            Profile
+                        </NavLink>
 
-                    <NavLink to="/dashboard/activityLog" className={linkClasses}>
-                        <AiOutlineHistory size={20} />
-                        Activity Log
-                    </NavLink>
-                    <NavLink to="/dashboard/bookedTrainer" className={linkClasses}>
-                        <AiOutlineUserSwitch size={20} />
-                        Booked Trainer
-                    </NavLink>
+                        <NavLink to="/dashboard/activityLog" className={linkClasses}>
+                            <AiOutlineHistory size={20} />
+                            Activity Log
+                        </NavLink>
+                        <NavLink to="/dashboard/bookedTrainer" className={linkClasses}>
+                            <AiOutlineUserSwitch size={20} />
+                            Booked Trainer
+                        </NavLink>
                     </>}
 
 
