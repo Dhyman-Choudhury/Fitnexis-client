@@ -34,6 +34,10 @@ import TrainerRoute from "../routes/TrainerRoute";
 import MemberRoute from "../routes/MemberRoute";
 import AdminTrainerRoute from "../routes/AdminTrainerRoute";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashBoardHome";
+import About from "../pages/Home/About/About";
+import ContactUs from "../pages/quickLinks/ContactUs";
+import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
+import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -101,7 +105,23 @@ export const router = createBrowserRouter([
       {
         path: '/forums/:id',
         Component: ForumDetails
-      }
+      },
+        {
+        path: '/about',
+        Component: About
+      },
+      {
+        path: '/contact',
+        Component: ContactUs
+      },
+      {
+        path: '/privacy',
+        Component: PrivacyPolicy
+      },
+      {
+        path: '/terms',
+        Component: TermsAndConditions
+      },
     ]
   },
   {
