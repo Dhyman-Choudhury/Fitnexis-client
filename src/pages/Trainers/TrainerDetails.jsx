@@ -66,7 +66,7 @@ console.log(slots)
   const isTrainer = users?.find(us => us?.email === user?.email)
 
   return (
-    <div className="container mx-auto p-4 rounded-md shadow-lg">
+    <div className="container mx-auto p-4  shadow-lg my-0.5 rounded-lg">
       <ToastContainer />
       <div className="flex flex-col md:flex-row gap-8 mb-6">
         {/* Image */}

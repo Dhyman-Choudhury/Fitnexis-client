@@ -31,17 +31,15 @@ const AllTrainers = () => {
   if (isLoading) return <Loader />;
   if (isError) return <p className="text-red-500">Error loading trainers.</p>;
 
-  // --- Helper to normalize slot names ---
   const getSlotName = (slotName) => {
     const name = slotName.toLowerCase();
     if (name.includes('morning')) return 'Morning';
     if (name.includes('afternoon')) return 'Afternoon';
     if (name.includes('evening')) return 'Evening';
     if (name.includes('night')) return 'Night';
-    return slotName; // fallback
+    return slotName;
   };
 
-  // --- Compute filters ---
   const availableDays = Array.from(
     new Set(trainers.flatMap((t) => t.availableDays || []))
   );
@@ -57,7 +55,6 @@ const AllTrainers = () => {
 
   const experienceOptions = ['2yrs', '3yrs', '4yrs', '5yrs'];
 
-  // --- Filter trainers ---
   const filteredTrainers = trainers.filter((trainer) => {
     const matchesDay = selectedDay ? trainer.availableDays?.includes(selectedDay) : true;
     const matchesSlot = selectedSlot
@@ -71,7 +68,6 @@ const AllTrainers = () => {
     return matchesDay && matchesSlot && matchesExperience;
   });
 
-  // --- Pagination ---
   const totalPages = Math.max(1, Math.ceil(filteredTrainers.length / trainersPerPage));
   const paginatedTrainers = filteredTrainers.slice(
     (currentPage - 1) * trainersPerPage,
@@ -79,78 +75,60 @@ const AllTrainers = () => {
   );
 
   return (
-    <div className="container mx-auto p-4 my-0.5 rounded-lg">
-      <div className="flex gap-6">
-        {/* --- Sidebar Filters --- */}
-        <div className="w-64 bg-gray-400 p-4 rounded-lg space-y-4 h-fit mt-16">
+    <div className="container mx-auto px-2 md:px-6 my-0.5 rounded-lg">
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Sidebar Filters */}
+        <div className="w-full lg:w-64 bg-gray-400 p-4 rounded-lg space-y-4 h-fit mt-6 lg:mt-16">
           <h2 className="text-xl font-bold mb-4">Filters</h2>
 
-          {/* Available Day */}
           <div>
             <label className="block mb-1 font-medium">Available Day</label>
             <select
               value={selectedDay}
-              onChange={(e) => {
-                setSelectedDay(e.target.value);
-                setCurrentPage(1);
-              }}
+              onChange={(e) => { setSelectedDay(e.target.value); setCurrentPage(1); }}
               className="w-full p-2 rounded text-black bg-white"
             >
               <option value="">All</option>
               {availableDays.map((day) => (
-                <option key={day} value={day}>
-                  {day}
-                </option>
+                <option key={day} value={day}>{day}</option>
               ))}
             </select>
           </div>
 
-          {/* Available Slot */}
           <div>
             <label className="block mb-1 font-medium">Available Slot</label>
             <select
               value={selectedSlot}
-              onChange={(e) => {
-                setSelectedSlot(e.target.value);
-                setCurrentPage(1);
-              }}
+              onChange={(e) => { setSelectedSlot(e.target.value); setCurrentPage(1); }}
               className="w-full p-2 rounded text-black bg-white"
             >
               <option value="">All</option>
               {availableSlots.map((slot) => (
-                <option key={slot} value={slot}>
-                  {slot}
-                </option>
+                <option key={slot} value={slot}>{slot}</option>
               ))}
             </select>
           </div>
 
-          {/* Experience */}
           <div>
             <label className="block mb-1 font-medium">Experience</label>
             <select
               value={selectedExperience}
-              onChange={(e) => {
-                setSelectedExperience(e.target.value);
-                setCurrentPage(1);
-              }}
+              onChange={(e) => { setSelectedExperience(e.target.value); setCurrentPage(1); }}
               className="w-full p-2 rounded text-black bg-white"
             >
               <option value="">All</option>
               {experienceOptions.map((exp) => (
-                <option key={exp} value={exp}>
-                  {exp}
-                </option>
+                <option key={exp} value={exp}>{exp}</option>
               ))}
             </select>
           </div>
         </div>
 
-        {/* --- Main Content --- */}
+        {/* Main Content */}
         <div className="flex-1">
           <h1 className="text-3xl md:text-4xl text-white font-bold mb-6">All Trainers</h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginatedTrainers.map((trainer, i) => (
               <motion.div
                 key={trainer._id}
@@ -176,9 +154,7 @@ const AllTrainers = () => {
 
                   <p className="text-green-800 text-lg flex gap-2 mt-2 flex-wrap">
                     <span className="text-gray-800">Available Days:</span>
-                    {trainer?.availableDays?.map((day, index) => (
-                      <span key={index}>{day}</span>
-                    ))}
+                    {trainer?.availableDays?.map((day, index) => <span key={index}>{day}</span>)}
                   </p>
 
                   <div className="mt-2">
@@ -188,10 +164,7 @@ const AllTrainers = () => {
                         {trainer?.availableSlots
                           ?.filter((slot) => !slot.isBooked)
                           .map((slot) => (
-                            <span
-                              key={slot._id}
-                              className="bg-blue-600 text-white px-3 py-1 rounded text-sm"
-                            >
+                            <span key={slot._id} className="bg-blue-600 text-white px-3 py-1 rounded text-sm">
                               {getSlotName(slot?.slotName)}
                             </span>
                           ))}
@@ -213,7 +186,7 @@ const AllTrainers = () => {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex flex-wrap justify-center mt-6 gap-2">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
