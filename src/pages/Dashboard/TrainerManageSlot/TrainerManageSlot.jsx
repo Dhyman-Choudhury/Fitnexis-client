@@ -65,10 +65,10 @@ const TrainerManageSlot = () => {
     return (
         <div className="p-4">
             <ToastContainer/>
-            <h2 className="night_text text-2xl font-bold mb-6 text-center">Manage Trainer Slots</h2>
+            <h2 className="night_text text-3xl md:text-4xl font-bold mb-10 text-center">Manage Trainer Slots</h2>
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-                    <thead className="bg-blue-500 text-white text-left ">
+                    <thead className="bg-gray-100 text-black text-left ">
                         <tr>
                             <th className="px-4 py-2">#</th>
                             <th className="px-4 py-2">Slot Name</th>

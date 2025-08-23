@@ -23,7 +23,7 @@ const AppliedTrainerList = () => {
         <div className="p-6 max-w-6xl mx-auto">
             <h2 className="text-2xl font-semibold mb-6">Applied Trainers</h2>
             {applications.length === 0 ? (
-                <p>No trainer applications found.</p>
+                <p>If someone applies to become a trainer, this page displays the applicant’s information.</p>
             ) : (
                 <table className="min-w-full border border-gray-300">
                     <thead className="bg-gray-100 mx-auto text-center">
@@ -37,7 +37,7 @@ const AppliedTrainerList = () => {
                     </thead>
                     <tbody>
                         {applications.map((app) => (
-                            <tr key={app._id} className="bg-gray-200 text-gray-800 hover:bg-[#18353e] hover:text-gray-50 mx-auto text-center">
+                            <tr key={app._id} className="bg-gray-200 text-gray-800 mx-auto text-center">
                                 <td className="py-2 px-4 border-b">{app.name || 'N/A'}</td>
                                 <td className="py-2 px-4 border-b">{app.email || 'N/A'}</td>
                                 <td className="py-2 px-4 border-b">{new Date(app.created_at).toLocaleDateString() || 'N/A'}</td>

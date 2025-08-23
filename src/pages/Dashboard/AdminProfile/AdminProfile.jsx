@@ -26,50 +26,57 @@ const AdminProfile = () => {
 
     return (
         <div className="night_text min-h-screen p-4 md:p-10 table_bg">
-            <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-10">
-                <h2 className="text-3xl font-bold mb-8 text-gray-800">Admin Profile</h2>
-
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md p-6 md:p-10">
+                {/* Profile Picture */}
+                <div className="flex flex-col items-center mb-6">
                     <img
                         src={profileData?.photo || "/default-avatar.png"}
-                        alt={profileData?.name || "Admin"}
+                        alt={profileData?.name || "Profile"}
                         className="w-32 h-32 rounded-full object-cover border-2 border-gray-300"
                     />
-                    <div className="flex-1 space-y-2">
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-800">Name</h3>
-                            <p className="text-gray-600">{profileData?.name || "N/A"}</p>
-                        </div>
 
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-800">Email</h3>
-                            <p className="text-gray-600">{profileData?.email || "N/A"}</p>
-                        </div>
+                    <h2 className="text-2xl font-bold mt-1 text-gray-800">{profileData?.name || "N/A"}</h2>
+                    <span className="mt-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium">
+                        Verified
+                    </span>
+                </div>
 
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-800">Phone</h3>
-                            <p className="text-gray-600">{profileData?.phone || "N/A"}</p>
-                        </div>
+                {/* Profile Details */}
+                <div className="space-y-4 text-gray-700">
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Date Join</span>
+                        <span>
+                            {profileData?.created_at
+                                ? new Date(profileData.created_at).toLocaleDateString()
+                                : "N/A"}
+                        </span>
 
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-800">Address</h3>
-                            <p className="text-gray-600">{profileData?.address || "N/A"}</p>
-                        </div>
-
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-800">Role</h3>
-                            <p className="text-gray-600">{profileData?.role || "Admin"}</p>
-                        </div>
-
-                        <div>
-                            <h3 className="text-xl font-semibold text-gray-800">Last Login</h3>
-                            <p className="text-gray-600">
-                                {profileData?.last_log_in
-                                    ? new Date(profileData.last_log_in).toLocaleString()
-                                    : "N/A"}
-                            </p>
-                        </div>
                     </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Status</span>
+                        <span>{profileData?.status || "Active"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Name</span>
+                        <span>{profileData?.name || "N/A"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Email</span>
+                        <span>{profileData?.email || "N/A"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Role</span>
+                        <span>{profileData?.role || "N/A"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Phone Number</span>
+                        <span>{profileData?.phone || "+880123456789"}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span className="font-semibold">Address</span>
+                        <span>{profileData?.address || "Dhaka, Bangladesh"}</span>
+                    </div>
+
                 </div>
             </div>
         </div>

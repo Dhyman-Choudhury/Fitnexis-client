@@ -52,7 +52,7 @@ const AllTrainersD = () => {
 
     return (
         <div className="night_text px-4 table_bg min-h-screen py-10">
-            <h1 className="text-4xl text-white font-bold mb-4">All Trainers</h1>
+            <h1 className="text-3xl md:text-4xl text-black font-bold mb-4">All Trainers</h1>
             <div className="overflow-x-auto">
                 <table className="table w-full bg-white border">
                     <thead>

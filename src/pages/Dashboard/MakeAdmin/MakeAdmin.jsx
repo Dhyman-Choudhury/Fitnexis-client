@@ -89,7 +89,7 @@ const MakeAdmin = () => {
                         </thead>
                         <tbody>
                             {users.map((u) => (
-                                <tr key={u._id} className="bg-gray-200 text-gray-800 hover:bg-[#18353e] hover:text-gray-50">
+                                <tr key={u._id} className="bg-gray-200 text-gray-800 ">
                                     <td className="py-2 px-4 border-b">{u.email}</td>
                                     <td className="py-2 px-4 border-b">
                                         {new Date(u.created_at).toLocaleDateString()}

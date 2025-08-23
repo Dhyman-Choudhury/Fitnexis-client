@@ -18,7 +18,7 @@ const AdminNewsletter = () => {
   return (
     <div className="night_text table_bg min-h-screen py-10">
     <div className="p-4 md:p-6">
-      <h2 className="text-4xl text-white font-bold mb-5">📬 All Newsletter Subscribers</h2>
+      <h2 className="text-4xl text-black font-bold mb-5"> All Newsletter Subscribers</h2>
 
       {isLoading && <Loader></Loader>}
       {isError && <p className="text-red-500">Failed to load subscribers.</p>}
@@ -39,7 +39,7 @@ const AdminNewsletter = () => {
             </thead>
             <tbody>
               {subscribers.map((subscriber, index) => (
-                <tr key={subscriber._id} className="bg-gray-200 text-gray-800 hover:bg-[#18353e] hover:text-gray-50">
+                <tr key={subscriber._id} className="bg-gray-200 text-gray-800 ">
                   <td className="p-3 border-b">{index + 1}</td>
                   <td className="p-3 border-b">{subscriber.name}</td>
                   <td className="p-3 border-b">{subscriber.email}</td>

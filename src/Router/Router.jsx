@@ -38,9 +38,9 @@ import About from "../pages/Home/About/About";
 import ContactUs from "../pages/quickLinks/ContactUs";
 import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
 import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
-import AdminOverview from "../pages/Dashboard/OverView/AdminOverview";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
-import MemberOverview from "../pages/Dashboard/Member/MemberOverview";
+import TrainerProfile from "../pages/Dashboard/TrainerProfile/TrainerProfile";
+import TrainerOverview from "../pages/Dashboard/AddForumModal/TrainerOverview/TrainerOverview";
 
 export const router = createBrowserRouter([
   {
@@ -143,11 +143,6 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><Payment /></PrivateRoutes>
       },
       {
-        path: 'overview',
-
-        element:<AdminRoute><AdminOverview></AdminOverview></AdminRoute> ,
-      },
-      {
         path: 'adminProfile',
 
         element:<AdminRoute><AdminProfile></AdminProfile></AdminRoute> ,
@@ -189,6 +184,14 @@ export const router = createBrowserRouter([
         element:<AdminRoute><AddClass></AddClass></AdminRoute>
       },
       {
+        path: 'trainerProfile',
+        element:<TrainerRoute><TrainerProfile></TrainerProfile></TrainerRoute> 
+      },
+      {
+        path: 'trainerOverview',
+        element:<TrainerRoute><TrainerOverview></TrainerOverview></TrainerRoute> 
+      },
+      {
         path: 'trainerAddSlot',
         element:<TrainerRoute><TrainerAddSlot></TrainerAddSlot></TrainerRoute> 
       },
@@ -203,10 +206,6 @@ export const router = createBrowserRouter([
       {
         path: 'profile',
         element:<MemberRoute><Profile></Profile></MemberRoute> 
-      },
-      {
-        path: 'memberOverview',
-        element:<MemberRoute><MemberOverview></MemberOverview></MemberRoute> 
       },
       {
         path: 'activityLog',

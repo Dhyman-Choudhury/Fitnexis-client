@@ -30,9 +30,10 @@ const DashboardLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const linkClasses = ({ isActive }) =>
-        isActive
-            ? 'flex items-center gap-2 px-4 py-2 rounded bg-blue-400 text-white'
-            : 'flex items-center gap-2 px-4 py-2 rounded hover:bg-gray-200';
+  isActive
+    ? 'flex items-center gap-2 px-4 py-2 rounded bg-blue-400 text-white'
+    : 'flex items-center gap-2 px-4 py-2 rounded hover:bg-gray-200 hover:text-gray-800';
+
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row">
@@ -73,10 +74,7 @@ const DashboardLayout = () => {
                     {/* Admin */}
                     {!roleLoading && role === 'admin' && <>
 
-                        <NavLink to="/dashboard/overview" className={linkClasses}>
-                            <AiOutlinePieChart size={20} />
-                            Dashboard Overview
-                        </NavLink>
+                        
                         <NavLink to="/dashboard/adminProfile" className={linkClasses}>
                             <AiOutlineUser size={20} />
                             Admin Profile
@@ -115,6 +113,14 @@ const DashboardLayout = () => {
 
                     {/* Trainer */}
                     {!roleLoading && role === 'trainer' && <>
+                       <NavLink to="/dashboard/trainerProfile" className={linkClasses}>
+                            <AiOutlineUser size={20} />
+                            Profile
+                        </NavLink>
+                        <NavLink to="/dashboard/trainerOverview" className={linkClasses}>
+                            <AiOutlinePieChart size={20} />
+                            Trainer Overview
+                        </NavLink>
                         <NavLink to="/dashboard/trainerAddSlot" className={linkClasses}>
                             <MdAddToPhotos size={20} />
                             Trainer Add Slot
@@ -135,12 +141,6 @@ const DashboardLayout = () => {
                             <AiOutlineUser size={20} />
                             Profile
                         </NavLink>
-                        <NavLink to="/dashboard/memberOverview" className={linkClasses}>
-                            <AiOutlineBarChart size={20} />
-                            Member Overview
-                        </NavLink>
-
-
                         <NavLink to="/dashboard/activityLog" className={linkClasses}>
                             <AiOutlineHistory size={20} />
                             Activity Log

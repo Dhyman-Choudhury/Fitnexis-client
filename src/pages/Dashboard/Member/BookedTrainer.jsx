@@ -49,7 +49,7 @@ const BookedTrainer = () => {
   return (
     <div className='night_text table_bg min-h-screen py-10'>
     <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-4xl text-gray-50 font-bold mb-10 text-center">Booked Trainer Details</h2>
+      <h2 className="text-3xl md:text-4xl text-black font-bold mb-10 text-center">Booked Trainer Details</h2>
 
      {
         booking?.map((data, index)=>
@@ -71,14 +71,14 @@ const BookedTrainer = () => {
               </div>
               <div>
               
-                <p><span className="font-medium">Name:</span> {trainer?.name}</p>
-                <p><span className="font-medium">Email:</span> {trainer?.email}</p>
-                <p><span className="font-medium">Age:</span> {trainer?.age}</p>
+                <p><span className="font-medium"><strong>Name:</strong> </span> {trainer?.name}</p>
+                <p><span className="font-medium"><strong>Email:</strong> </span> {trainer?.email}</p>
+                <p><span className="font-medium"><strong>Age:</strong> </span> {trainer?.age}</p>
                
               </div>
               <div>
               
-                <p><span className="font-medium">Experience:</span> {trainer?.experience}</p>
+                <p><span className="font-medium"><strong>Experience:</strong></span> {trainer?.experience}</p>
                <div className='flex gap-1'>
                 <strong>Skills:</strong>
                 {trainer?.skills?.map((skill, index) =><p key={index}><span className="font-medium"></span> {skill},</p> )}
@@ -95,7 +95,7 @@ const BookedTrainer = () => {
             
             <button
               onClick={() => handleReview(trainer)}
-              className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="btn-primary"
             >
               Leave a Review
             </button>
@@ -110,8 +110,8 @@ const BookedTrainer = () => {
         {/* Slot Info */}
         <h3 className="text-2xl font-semibold mb-2">Slot Info</h3>
         <p className="mb-4">
-          <span className="font-medium">Name:</span> {data?.slotName} <br />
-          <span className="font-medium">Time:</span> {data?.slotTime}
+          <span className="font-medium"><strong>Name:</strong> </span> {data?.slotName} <br />
+          <span className="font-medium"><strong>Time:</strong> </span> {data?.slotTime}
         </p>
 
         {/* Other Info */}

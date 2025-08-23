@@ -3,7 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/shared/Loader";
 
-const Profile = () => {
+const TrainerProfile = () => {
     const { user } = useAuth();
     const [profileData, setProfileData] = useState(null);
     const axiosSecure = useAxiosSecure();
@@ -83,4 +83,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default TrainerProfile;

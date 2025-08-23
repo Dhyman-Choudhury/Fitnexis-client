@@ -59,7 +59,7 @@ const FeaturedClasses = () => {
                 <strong>Total Bookings:</strong> {cls.totalBookings}
               </p>
               <p className="text-gray-700">
-                {cls?.details || 'No description available'}...
+                {cls?.details || 'No description available'}
               </p>
               {/*.slice(0, 80)
                <Link
